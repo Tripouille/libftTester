@@ -7,14 +7,14 @@ extern "C"
 
 #include "sigsegv.hpp"
 
+int ko(void) {cout << FG_RED << "KO" << ENDL; return (0);}
+int ok(void) {cout << FG_GREEN << "OK" << ENDL; return (0);}
+
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
-	cout << FG_LGRAY << "ft_strlen : ";
+	cout << FG_LGRAY << "ft_strlen\t: ";
 	if (ft_strlen("123") != 3 || ft_strlen("") != 0)
-		cout << FG_RED << "KO";
-	else
-		cout << FG_GREEN << "OK";
-	cout << ENDL;
-	return (0);
+		return (ko());
+	return (ok());
 }

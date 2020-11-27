@@ -14,16 +14,16 @@ int ok(void) {cout << FG_GREEN << "OK" << ENDL; return (0);}
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
-	cout << FG_LGRAY << "ft_memset\t: ";
+	cout << FG_LGRAY << "ft_bzero\t: ";
 	char tab[100];
-	memset(tab, 0, 100);
-	ft_memset(tab, 'A', 0);
-	if (tab[0] != 0)
-		return(ko());
-	ft_memset(tab, 'A', 42);
+	memset(tab, 'A', 100);
+	ft_bzero(tab, 0);
+	if (tab[0] != 'A')
+		return (ko());
+	ft_bzero(tab, 42);
 	int i = 0;
-	for (; i < 100 && tab[i] == 'A'; ++i);
-	if (i != 42 || tab[42] != 0)
-		return(ko());
+	for (; i < 100 && tab[i] == 0; ++i);
+	if (i != 42 || tab[42] != 'A')
+		return (ko());
 	return (ok());
 }
