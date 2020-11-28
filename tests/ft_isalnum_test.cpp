@@ -14,6 +14,7 @@ int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_isalnum\t: ";
+	
 	check(!ft_isalnum('a' - 1));
 	check(ft_isalnum('a'));
 	check(!ft_isalnum('z' + 1));
