@@ -8,6 +8,7 @@ MANDATORY		= memset bzero memcpy memccpy memmove memchr memcmp strlen isalpha is
 VMANDATORY		= $(addprefix v, $(MANDATORY))
 BONUS			= lstnew lstadd_front lstsize lstlast lstadd_back lstdelone lstclear lstiter lstmap
 VBONUS			= $(addprefix v, $(BONUS))
+VSOPEN			= $(addprefix vs, $(MANDATORY)) $(addprefix vs, $(BONUS))
 
 CC		= clang++
 CFLAGS	= -g3 -std=c++11 -I utils/ -I.. -lbsd
@@ -23,6 +24,10 @@ $(BONUS): %: bonus_start
 
 $(VBONUS): v%: bonus_start
 	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && valgrind -q --leak-check=full ./a.out && rm -f a.out
+
+$(VSOPEN): vs%:
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && valgrind -q --leak-check=full ./a.out && rm -f a.out
+	@code $(TESTS_PATH)ft_$*_test.cpp
 
 mandatory_start:
 	make -C ..
