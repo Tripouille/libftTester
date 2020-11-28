@@ -1,17 +1,20 @@
-.DEFAULT_GOAL := mandatory
-UTILS = utils/sigsegv.cpp utils/color.cpp
-TESTS_PATH = tests/
-MANDATORY = memset bzero memcpy memccpy strlen
-BONUS = prout
+.DEFAULT_GOAL	:= mandatory
+UTILS			= utils/sigsegv.cpp utils/color.cpp
+TESTS_PATH		= tests/
+MANDATORY		= memset bzero memcpy memccpy memmove memchr memcmp strlen isalpha isdigit isalnum \
+				isascii isprint toupper tolower strchr strrchr strncmp strlcpy strlcat strnstr \
+				atoi calloc strdup substr strjoin strtrim split itoa strmapi putchar_fd putstr_fd \
+				putendl_fd putnbr_fd
+BONUS			= lstnew lstadd_front lstsize lstlast lstadd_back lstdelone lstclear lstiter lstmap
 
 CC		= clang++
 CFLAGS	= -g3 -Wall -Wextra -Werror -Wconversion -std=c++98 -I utils/ -I..
 
-$(MANDATORY): %:
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$@_test.cpp -L.. -lft && ./a.out
+$(MANDATORY): %: mandatory_start
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$@_test.cpp -L.. -lft && ./a.out && rm -f a.out
 
-$(BONUS): %:
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$@_test.cpp -L.. -lft && ./a.out
+$(BONUS): %: bonus_start
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$@_test.cpp -L.. -lft && ./a.out && rm -f a.out
 
 mandatory_start:
 	make -C ..
@@ -21,11 +24,8 @@ bonus_start:
 	make bonus -C ..
 	@tput setaf 4 && echo [Bonus]
 
-mandatory: mandatory_start $(MANDATORY) clean
-bonus: bonus_start $(BONUS) clean
+mandatory:  $(MANDATORY)
+bonus:  $(BONUS)
 all: mandatory bonus
-
-clean:
-	@rm -f a.out
 
 .PHONY:	all clean fclean re color
