@@ -14,13 +14,22 @@ void check(bool succes) {if (succes) cout << FG_GREEN << "OK "; else cout << FG_
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
-	cout << FG_LGRAY << "ft_calloc\t: ";
+	cout << FG_LGRAY << "ft_substr\t: ";
 
-	void * p = ft_calloc(2, 2);
-	char e[] = {0, 0, 0, 0};
-	check(!memcmp(p, e, 4));
-	void * p2 = calloc(2, 2);
-	check(malloc_usable_size(p) == malloc_usable_size(p2)); free(p); free(p2);
+	char * s = ft_substr("tripouille", 0, -1);
+	check(!strcmp(s, "tripouille"));
+	void * s2 = malloc(strlen("tripouille") + 1);
+	check(malloc_usable_size(s) == malloc_usable_size(s2)); free(s); free(s2);
+
+	s = ft_substr("tripouille", 1, 1);
+	check(!strcmp(s, "r"));
+	s2 = malloc(2);
+	check(malloc_usable_size(s) == malloc_usable_size(s2)); free(s); free(s2);
+
+	s = ft_substr("tripouille", 100, 1);
+	check(!strcmp(s, ""));
+	s2 = malloc(1);
+	check(malloc_usable_size(s) == malloc_usable_size(s2)); free(s); free(s2);
 	cout << ENDL;
 	return (0);
 }
