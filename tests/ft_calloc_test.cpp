@@ -18,6 +18,7 @@ int main(void)
 	void * p = ft_calloc(2, 2);
 	char e[] = {0, 0, 0, 0};
 	check(!memcmp(p, e, 4));
+	free(p);
 	cout << ENDL;
 	return (0);
 }

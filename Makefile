@@ -4,17 +4,25 @@ TESTS_PATH		= tests/
 MANDATORY		= memset bzero memcpy memccpy memmove memchr memcmp strlen isalpha isdigit isalnum \
 				isascii isprint toupper tolower strchr strrchr strncmp strlcpy strlcat strnstr \
 				atoi calloc #strdup substr strjoin strtrim split itoa strmapi putchar_fd putstr_fd \
-				putendl_fd putnbr_fd
+				putendl_fd putnbr_fd	
+VMANDATORY		= $(addprefix v, $(MANDATORY))
 BONUS			= lstnew lstadd_front lstsize lstlast lstadd_back lstdelone lstclear lstiter lstmap
+VBONUS			= $(addprefix v, $(BONUS))
 
 CC		= clang++
 CFLAGS	= -g3 -std=c++11 -I utils/ -I.. -lbsd
 
 $(MANDATORY): %: mandatory_start
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$@_test.cpp -L.. -lft && ./a.out && rm -f a.out
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && ./a.out && rm -f a.out
+
+$(VMANDATORY): v%: mandatory_start
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && valgrind -q --leak-check=full ./a.out && rm -f a.out
 
 $(BONUS): %: bonus_start
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$@_test.cpp -L.. -lft && ./a.out && rm -f a.out
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && ./a.out && rm -f a.out
+
+$(VBONUS): v%: bonus_start
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && valgrind -q --leak-check=full ./a.out && rm -f a.out
 
 mandatory_start:
 	make -C ..
@@ -27,5 +35,8 @@ bonus_start:
 m: $(MANDATORY)
 b: $(BONUS)
 a: m b
+vm: $(VMANDATORY)
+vb: $(VBONUS)
+va: vm vb
 
-.PHONY:	mandatory_start m bonus_start b a
+.PHONY:	mandatory_start m vm bonus_start b vb a va
