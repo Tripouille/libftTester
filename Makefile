@@ -1,4 +1,4 @@
-.DEFAULT_GOAL	:= mandatory
+.DEFAULT_GOAL	:= m
 UTILS			= utils/sigsegv.cpp utils/color.cpp
 TESTS_PATH		= tests/
 MANDATORY		= memset bzero memcpy memccpy memmove memchr memcmp strlen isalpha isdigit isalnum \
@@ -24,8 +24,8 @@ bonus_start:
 	make bonus -C ..
 	@tput setaf 5 && echo [Bonus]
 
-mandatory: $(MANDATORY)
-bonus: $(BONUS)
-all: mandatory bonus
+m: $(MANDATORY)
+b: $(BONUS)
+a: m b
 
-.PHONY:	mandatory_start mandatory bonus_start bonus all
+.PHONY:	mandatory_start m bonus_start b a
