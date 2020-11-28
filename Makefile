@@ -22,10 +22,10 @@ mandatory_start:
 
 bonus_start:
 	make bonus -C ..
-	@tput setaf 4 && echo [Bonus]
+	@tput setaf 5 && echo [Bonus]
 
-mandatory:  $(MANDATORY)
-bonus:  $(BONUS)
+mandatory: $(MANDATORY)
+bonus: $(BONUS)
 all: mandatory bonus
 
-.PHONY:	all clean fclean re color
+.PHONY:	mandatory_start mandatory bonus_start bonus all
