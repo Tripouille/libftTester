@@ -25,8 +25,7 @@ $(BONUS): %: bonus_start
 $(VBONUS): v%: bonus_start
 	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && valgrind -q --leak-check=full ./a.out && rm -f a.out
 
-$(VSOPEN): vs%:
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && valgrind -q --leak-check=full ./a.out && rm -f a.out
+$(VSOPEN): vs%: v%
 	@code $(TESTS_PATH)ft_$*_test.cpp
 
 mandatory_start:
