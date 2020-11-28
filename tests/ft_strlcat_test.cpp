@@ -14,6 +14,7 @@ int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_strlcat\t: ";
+	
 	char dest[30]; memset(dest, 0, 30);
 	char src[10]; memset(src, 'A', 9); src[9] = 0;
 	dest[0] = 'B';
