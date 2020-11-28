@@ -8,32 +8,27 @@ extern "C"
 #include "sigsegv.hpp"
 #include <string.h>
 
-int ko(void) {cout << FG_RED << "KO" << ENDL; return (0);}
-int ok(void) {cout << FG_GREEN << "OK" << ENDL; return (0);}
+void check(bool succes) {if (succes) cout << FG_GREEN << "OK "; else cout << FG_RED << "KO ";}
 
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_memccpy\t: ";
+	
 	char dest[100];
 	memset(dest, 'A', 100);
-	if (ft_memccpy(dest, "coucou", 0, 0) != 0 || dest[0] != 'A')
-		return (ko());
-	if (ft_memccpy(dest, "coucou", 0, 1) != 0 || dest[0] != 'c' || dest[1] != 'A')
-		return (ko());
+	check(ft_memccpy(dest, "coucou", 0, 0) == 0 && dest[0] == 'A');
+	check(ft_memccpy(dest, "coucou", 0, 1) == 0 && dest[0] == 'c' && dest[1] == 'A');
 	dest[0] = 'A';
-	if (ft_memccpy(dest, "coucou", 'c', 10) != dest + 1 || dest[0] != 'c' || dest[1] != 'A')
-		return (ko());
+	check(ft_memccpy(dest, "coucou", 'c', 10) == dest + 1 && dest[0] == 'c' && dest[1] == 'A');
 	dest[0] = 'A';
-	if (ft_memccpy(dest, "B", 0, 10) != dest + 2 || dest[0] != 'B' || dest[1] != 0)
-		return (ko());
+	check(ft_memccpy(dest, "B", 0, 10) == dest + 2 && dest[0] == 'B' && dest[1] == 0);
 	char src[10];
 	memset(src, 0, 10);
-	if (ft_memccpy(dest, src, 'A', 10) != NULL)
-		return (ko());
+	check(ft_memccpy(dest, src, 'A', 10) == NULL);
 	int i = 0;
 	for (; i < 100 && dest[i] == 0; ++i);
-	if (i != 10)
-		return (ko());
-	return (ok());
+	check(i == 10);
+	cout << ENDL;
+	return (0);
 }

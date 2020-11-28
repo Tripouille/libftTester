@@ -13,16 +13,16 @@ void check(bool succes) {if (succes) cout << FG_GREEN << "OK "; else cout << FG_
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
-	cout << FG_LGRAY << "ft_memset\t: ";
-	
-	char tab[100];
-	memset(tab, 0, 100);
-	ft_memset(tab, 'A', 0);
-	check(tab[0] == 0);
-	ft_memset(tab, 'A', 42);
-	int i = 0;
-	for (; i < 100 && tab[i] == 'A'; ++i);
-	check(i == 42 && tab[42] == 0);
+	cout << FG_LGRAY << "ft_isalpha\t: ";
+
+	check(!ft_isalpha('a' - 1));
+	check(ft_isalpha('a'));
+	check(!ft_isalpha('z' + 1));
+	check(ft_isalpha('z'));
+	check(!ft_isalpha('A' - 1));
+	check(ft_isalpha('A'));
+	check(!ft_isalpha('Z' + 1));
+	check(ft_isalpha('Z'));
 	cout << ENDL;
 	return (0);
 }

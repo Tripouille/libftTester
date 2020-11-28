@@ -8,22 +8,21 @@ extern "C"
 #include "sigsegv.hpp"
 #include <string.h>
 
-int ko(void) {cout << FG_RED << "KO" << ENDL; return (0);}
-int ok(void) {cout << FG_GREEN << "OK" << ENDL; return (0);}
+void check(bool succes) {if (succes) cout << FG_GREEN << "OK "; else cout << FG_RED << "KO ";}
 
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_bzero\t: ";
+	
 	char tab[100];
 	memset(tab, 'A', 100);
 	ft_bzero(tab, 0);
-	if (tab[0] != 'A')
-		return (ko());
+	check(tab[0] == 'A');
 	ft_bzero(tab, 42);
 	int i = 0;
 	for (; i < 100 && tab[i] == 0; ++i);
-	if (i != 42 || tab[42] != 'A')
-		return (ko());
-	return (ok());
+	check(i == 42 && tab[42] == 'A');
+	cout << ENDL;
+	return (0);
 }
