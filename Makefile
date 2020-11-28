@@ -3,7 +3,7 @@ UTILS			= utils/sigsegv.cpp utils/color.cpp
 TESTS_PATH		= tests/
 MANDATORY		= memset bzero memcpy memccpy memmove memchr memcmp strlen isalpha isdigit isalnum \
 				isascii isprint toupper tolower strchr strrchr strncmp strlcpy strlcat strnstr \
-				atoi calloc #strdup substr strjoin strtrim split itoa strmapi putchar_fd putstr_fd \
+				atoi calloc strdup substr strjoin strtrim split itoa strmapi putchar_fd putstr_fd \
 				putendl_fd putnbr_fd	
 VMANDATORY		= $(addprefix v, $(MANDATORY))
 BONUS			= lstnew lstadd_front lstsize lstlast lstadd_back lstdelone lstclear lstiter lstmap
@@ -39,4 +39,7 @@ vm: $(VMANDATORY)
 vb: $(VBONUS)
 va: vm vb
 
-.PHONY:	mandatory_start m vm bonus_start b vb a va
+clean:
+	make clean -C ..	
+
+.PHONY:	mandatory_start m vm bonus_start b vb a va clean
