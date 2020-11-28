@@ -6,7 +6,7 @@ extern "C"
 }
 
 #include "sigsegv.hpp"
-#include<string.h>
+#include <string.h>
 
 int ko(void) {cout << FG_RED << "KO" << ENDL; return (0);}
 int ok(void) {cout << FG_GREEN << "OK" << ENDL; return (0);}
