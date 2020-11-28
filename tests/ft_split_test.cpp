@@ -21,7 +21,7 @@ void freeTab(char * * tab)
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
-	cout << FG_LGRAY << "ft_split\t\t: ";
+	cout << FG_LGRAY << "ft_split\t: ";
 
 	char * * tab = ft_split("  tripouille  42  ", ' ');
 	void *  p = malloc(sizeof(char *) * 3);

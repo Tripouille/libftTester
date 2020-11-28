@@ -15,7 +15,7 @@ void check(bool succes) {if (succes) cout << FG_GREEN << "OK "; else cout << FG_
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
-	cout << FG_LGRAY << "ft_itoa\t: ";
+	cout << FG_LGRAY << "ft_itoa\t\t: ";
 
 	char * s = ft_itoa(INT_MAX);
 	check(!strcmp(s, to_string(INT_MAX).c_str()));
