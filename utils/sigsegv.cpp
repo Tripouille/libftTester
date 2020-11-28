@@ -5,5 +5,5 @@ void sigsegv(int signal)
 {
 	(void)signal;
 	cout << FG_LYELLOW << "SIGSEGV" << ENDL;
-	exit(-1);
+	exit(EXIT_FAILURE);
 }
