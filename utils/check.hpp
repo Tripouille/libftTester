@@ -9,6 +9,7 @@
 # endif
 # ifdef __APPLE__
 #  include <stdlib.h>
+#  include <malloc/malloc.h>
 # endif
 
 using namespace std;
