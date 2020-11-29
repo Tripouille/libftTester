@@ -16,7 +16,7 @@ void freeList(t_list *head) {if (head) freeList(head->next); free(head);}
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
-	cout << FG_LGRAY << "ft_lstdelone\t: " << FG_LYELLOW << UNDERLINED << "Must be run with valgrind";
+	cout << FG_LGRAY << "ft_lstdelone\t: " << FG_LYELLOW << BOLD << "CHECK WITH VALGRIND ";
 
 	t_list * l =  ft_lstnew(malloc(1));
 	ft_lstdelone(l, free);

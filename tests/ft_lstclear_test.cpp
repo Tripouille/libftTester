@@ -16,10 +16,13 @@ void freeList(t_list *head) {if (head) freeList(head->next); free(head);}
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
-	cout << FG_LGRAY << "ft_lstdelone\t: " << FG_LYELLOW << UNDERLINED << "Must be run with valgrind";
+	cout << FG_LGRAY << "ft_lstclear\t: " << FG_LYELLOW << BOLD << "CHECK WITH VALGRIND" << RESET_ALL << " ";
 
 	t_list * l =  ft_lstnew(malloc(1));
-	ft_lstdelone(l, free);
+	for (int i = 0; i < 10; ++i)
+		ft_lstadd_front(&l, ft_lstnew(malloc(1)));
+	ft_lstclear(&l, free);
+	check(l == 0);
 	cout << ENDL;
 	return (0);
 }
