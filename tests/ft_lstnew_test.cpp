@@ -6,10 +6,8 @@ extern "C"
 }
 
 #include "sigsegv.hpp"
+#include "check.hpp"
 #include <string.h>
-#include <malloc.h>
-
-void check(bool succes) {if (succes) cout << FG_GREEN << "OK "; else cout << FG_RED << "KO ";}
 
 int main(void)
 {
@@ -19,8 +17,7 @@ int main(void)
 	t_list * l =  ft_lstnew((void*)42);
 	check(l->content == (void*)42);
 	check(l->next == 0);
-	void * p = malloc(sizeof(t_list));
-	check(malloc_usable_size(l) == malloc_usable_size(p)); free(l); free(p);
+	mcheck(l, sizeof(t_list)); free(l);
 	cout << ENDL;
 	return (0);
 }

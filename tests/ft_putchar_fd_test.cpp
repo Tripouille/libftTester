@@ -6,12 +6,11 @@ extern "C"
 }
 
 #include "sigsegv.hpp"
+#include "check.hpp"
 #include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-
-void check(bool succes) {if (succes) cout << FG_GREEN << "OK "; else cout << FG_RED << "KO ";}
 
 int main(void)
 {

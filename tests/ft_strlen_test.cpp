@@ -6,8 +6,7 @@ extern "C"
 }
 
 #include "sigsegv.hpp"
-
-void check(bool succes) {if (succes) cout << FG_GREEN << "OK "; else cout << FG_RED << "KO ";}
+#include "check.hpp"
 
 int main(void)
 {

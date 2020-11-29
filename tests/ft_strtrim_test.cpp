@@ -6,10 +6,9 @@ extern "C"
 }
 
 #include "sigsegv.hpp"
+#include "check.hpp"
 #include <string.h>
 #include <malloc.h>
-
-void check(bool succes) {if (succes) cout << FG_GREEN << "OK "; else cout << FG_RED << "KO ";}
 
 int main(void)
 {
@@ -18,23 +17,19 @@ int main(void)
 
 	char * s = ft_strtrim("   xxxtripouille", " x");
 	check(!strcmp(s, "tripouille"));
-	void * s2 = malloc(strlen("tripouille") + 1);
-	check(malloc_usable_size(s) == malloc_usable_size(s2)); free(s); free(s2);
+	mcheck(s, strlen("tripouille") + 1); free(s);
 
 	s = ft_strtrim("tripouille   xxx", " x");
 	check(!strcmp(s, "tripouille"));
-	s2 = malloc(strlen("tripouille") + 1);
-	check(malloc_usable_size(s) == malloc_usable_size(s2)); free(s); free(s2);
+	mcheck(s, strlen("tripouille") + 1); free(s);
 
 	s = ft_strtrim("   xxxtripouille   xxx", " x");
 	check(!strcmp(s, "tripouille"));
-	s2 = malloc(strlen("tripouille") + 1);
-	check(malloc_usable_size(s) == malloc_usable_size(s2)); free(s); free(s2);
+	mcheck(s, strlen("tripouille") + 1); free(s);
 	
 	s = ft_strtrim("   xxx   xxx", " x");
 	check(!strcmp(s, ""));
-	s2 = malloc(1);
-	check(malloc_usable_size(s) == malloc_usable_size(s2)); free(s); free(s2);
+	mcheck(s, 1); free(s);
 	cout << ENDL;
 	return (0);
 }

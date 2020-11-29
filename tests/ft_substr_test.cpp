@@ -6,10 +6,9 @@ extern "C"
 }
 
 #include "sigsegv.hpp"
+#include "check.hpp"
 #include <string.h>
 #include <malloc.h>
-
-void check(bool succes) {if (succes) cout << FG_GREEN << "OK "; else cout << FG_RED << "KO ";}
 
 int main(void)
 {
@@ -18,18 +17,15 @@ int main(void)
 
 	char * s = ft_substr("tripouille", 0, -1);
 	check(!strcmp(s, "tripouille"));
-	void * s2 = malloc(strlen("tripouille") + 1);
-	check(malloc_usable_size(s) == malloc_usable_size(s2)); free(s); free(s2);
+	mcheck(s, strlen("tripouille") + 1); free(s);
 
 	s = ft_substr("tripouille", 1, 1);
 	check(!strcmp(s, "r"));
-	s2 = malloc(2);
-	check(malloc_usable_size(s) == malloc_usable_size(s2)); free(s); free(s2);
+	mcheck(s, 2); free(s);
 
 	s = ft_substr("tripouille", 100, 1);
 	check(!strcmp(s, ""));
-	s2 = malloc(1);
-	check(malloc_usable_size(s) == malloc_usable_size(s2)); free(s); free(s2);
+	mcheck(s, 1); free(s);
 	cout << ENDL;
 	return (0);
 }

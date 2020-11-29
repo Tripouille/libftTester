@@ -6,10 +6,8 @@ extern "C"
 }
 
 #include "sigsegv.hpp"
+#include "check.hpp"
 #include <string.h>
-#include <malloc.h>
-
-void check(bool succes) {if (succes) cout << FG_GREEN << "OK "; else cout << FG_RED << "KO ";}
 
 void freeTab(char * * tab)
 {
@@ -24,16 +22,13 @@ int main(void)
 	cout << FG_LGRAY << "ft_split\t: ";
 
 	char * * tab = ft_split("  tripouille  42  ", ' ');
-	void *  p = malloc(sizeof(char *) * 3);
-	check(malloc_usable_size(tab) == malloc_usable_size(p)); free(p);
+	mcheck(tab, sizeof(char *) * 3);
 
 	check(!strcmp(tab[0], "tripouille"));
-	p = malloc(strlen("tripouille") + 1);
-	check(malloc_usable_size(tab[0]) == malloc_usable_size(p)); free(p);
+	mcheck(tab[0], strlen("tripouille") + 1);
 
 	check(!strcmp(tab[1], "42"));
-	p = malloc(strlen("42") + 1);
-	check(malloc_usable_size(tab[1]) == malloc_usable_size(p)); free(p);
+	mcheck(tab[1], strlen("42") + 1);
 
 	check(tab[2] == NULL);
 	freeTab(tab);
