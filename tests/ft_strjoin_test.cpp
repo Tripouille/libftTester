@@ -8,7 +8,6 @@ extern "C"
 #include "sigsegv.hpp"
 #include "check.hpp"
 #include <string.h>
-#include <malloc.h>
 
 int main(void)
 {
