@@ -1,4 +1,4 @@
-.DEFAULT_GOAL	:= m
+.DEFAULT_GOAL	:= va
 UTILS			= utils/sigsegv.cpp utils/color.cpp
 TESTS_PATH		= tests/
 MANDATORY		= memset bzero memcpy memccpy memmove memchr memcmp strlen isalpha isdigit isalnum \
@@ -37,7 +37,7 @@ bonus_start:
 	@tput setaf 5 && echo [Bonus]
 
 m: $(MANDATORY)
-b: $(BONUS)
+b: $(filter-out lstclear lstdelone, $(BONUS)) vlstdelone vlstclear
 a: m b
 vm: $(filter-out vitoa, $(VMANDATORY)) itoa
 vb: $(VBONUS)
