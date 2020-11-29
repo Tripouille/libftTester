@@ -4,7 +4,7 @@ TESTS_PATH		= tests/
 MANDATORY		= memset bzero memcpy memccpy memmove memchr memcmp strlen isalpha isdigit isalnum \
 				isascii isprint toupper tolower strchr strrchr strncmp strlcpy strlcat strnstr \
 				atoi calloc strdup substr strjoin strtrim split itoa strmapi putchar_fd putstr_fd \
-				putendl_fd putnbr_fd	
+				putendl_fd putnbr_fd
 VMANDATORY		= $(addprefix v, $(MANDATORY))
 BONUS			= lstnew lstadd_front lstsize lstlast lstadd_back lstdelone lstclear lstiter lstmap
 VBONUS			= $(addprefix v, $(BONUS))
@@ -39,7 +39,7 @@ bonus_start:
 m: $(MANDATORY)
 b: $(BONUS)
 a: m b
-vm: $(VMANDATORY)
+vm: $(filter-out vitoa, $(VMANDATORY)) itoa
 vb: $(VBONUS)
 va: vm vb
 
