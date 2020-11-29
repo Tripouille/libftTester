@@ -2,8 +2,14 @@
 # define CHECK_HPP
 # include <iostream>
 # include <string>
-# include <malloc.h>
 # include "color.hpp"
+
+# ifdef __unix__
+#  include <malloc.h>
+# endif
+# ifdef __APPLE__
+#  include <stdlib.h>
+# endif
 
 using namespace std;
 
