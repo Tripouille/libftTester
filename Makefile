@@ -11,7 +11,7 @@ VBONUS			= $(addprefix v, $(BONUS))
 VSOPEN			= $(addprefix vs, $(MANDATORY)) $(addprefix vs, $(BONUS))
 
 CC		= clang++
-CFLAGS	= -g3 -std=c++11 -I utils/ -I.. -lbsd
+CFLAGS	= -g3 -std=c++11 -I utils/ -I..
 
 $(MANDATORY): %: mandatory_start
 	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && ./a.out && rm -f a.out
