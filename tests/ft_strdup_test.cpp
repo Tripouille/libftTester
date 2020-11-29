@@ -16,11 +16,11 @@ int main(void)
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_strdup\t: ";
 
-	char * s = ft_strdup("coucou");
+	char * s = ft_strdup((char*)"coucou");
 	check(!strcmp(s, "coucou"));
 	char * s2 = strdup("coucou");
 	check(malloc_usable_size(s) == malloc_usable_size(s2)); free(s); free(s2);
-	s = ft_strdup("");
+	s = ft_strdup((char*)"");
 	s2 = strdup("");
 	check(!strcmp(s, ""));
 	check(malloc_usable_size(s) == malloc_usable_size(s2)); free(s); free(s2);
