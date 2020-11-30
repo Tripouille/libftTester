@@ -9,15 +9,16 @@ extern "C"
 #include "check.hpp"
 #include <string.h>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_strchr\t: ";
 	char s[] = "tripouille";
-	check(ft_strchr(s, 't') == s);
-	check(ft_strchr(s, 'l') == s + 7);
-	check(ft_strchr(s, 'z') == 0);
-	check(ft_strchr(s, 0) == s + strlen(s));
+	/* 1 */ check(ft_strchr(s, 't') == s);
+	/* 2 */ check(ft_strchr(s, 'l') == s + 7);
+	/* 3 */ check(ft_strchr(s, 'z') == 0);
+	/* 4 */ check(ft_strchr(s, 0) == s + strlen(s));
 	cout << ENDL;
 	return (0);
 }

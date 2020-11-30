@@ -9,15 +9,16 @@ extern "C"
 #include "check.hpp"
 #include <string.h>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_isprint\t: ";
 
-	check(!ft_isprint(' ' - 1));
-	check(ft_isprint(' '));
-	check(!ft_isprint('~' + 1));
-	check(ft_isprint('~'));
+	/* 1 */ check(!ft_isprint(' ' - 1));
+	/* 2 */ check(ft_isprint(' '));
+	/* 3 */ check(!ft_isprint('~' + 1));
+	/* 4 */ check(ft_isprint('~'));
 	cout << ENDL;
 	return (0);
 }

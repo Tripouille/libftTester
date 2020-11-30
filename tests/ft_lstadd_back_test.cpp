@@ -11,6 +11,7 @@ extern "C"
 
 void freeList(t_list *head) {if (head) freeList(head->next); free(head);}
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
@@ -18,13 +19,13 @@ int main(void)
 
 	t_list * l =  NULL;
 	ft_lstadd_back(&l, ft_lstnew((void*)1));
-	check(l->content == (void*)1);
-	check(l->next == 0);
+	/* 1 */ check(l->content == (void*)1);
+	/* 2 */ check(l->next == 0);
 
 	ft_lstadd_back(&l, ft_lstnew((void*)2));
-	check(l->content == (void*)1);
-	check(l->next->content == (void*)2);
-	check(l->next->next == 0);
+	/* 3 */ check(l->content == (void*)1);
+	/* 4 */ check(l->next->content == (void*)2);
+	/* 5 */ check(l->next->next == 0);
 	freeList(l);
 	cout << ENDL;
 	return (0);

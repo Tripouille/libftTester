@@ -12,6 +12,7 @@ extern "C"
 #include <fcntl.h>
 #include <unistd.h>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
@@ -21,7 +22,7 @@ int main(void)
 	ft_putendl_fd((char*)"42", fd);
 	lseek(fd, SEEK_SET, 0);
 	char s[10] = {0}; read(fd, s, 4);
-	check(!strcmp(s, "42\n"));
+	/* 1 */ check(!strcmp(s, "42\n"));
 	unlink("./tripouille");
 	cout << ENDL;
 	return (0);

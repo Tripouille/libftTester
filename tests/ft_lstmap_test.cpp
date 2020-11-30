@@ -12,6 +12,7 @@ extern "C"
 void freeList(t_list *head) {if (head) freeList(head->next); free(head);}
 void * addOne(void * p) {void * r = malloc(sizeof(int)); *(int*)r = *(int*)p + 1; return (r);}
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
@@ -23,13 +24,13 @@ int main(void)
 		ft_lstadd_back(&l, ft_lstnew(tab + i));
 	t_list * m = ft_lstmap(l, addOne, free);
 	t_list * tmp = l;
-	for (int i = 0; i < 4; ++i)
+	/* 1 2 3 4 */ for (int i = 0; i < 4; ++i)
 	{
 		check(*(int*)tmp->content == i);
 		tmp = tmp->next;
 	}
 	tmp = m;
-	for (int i = 0; i < 4; ++i)
+	/* 5 6 7 8 */ for (int i = 0; i < 4; ++i)
 	{
 		check(*(int*)tmp->content == i + 1);
 		tmp = tmp->next;

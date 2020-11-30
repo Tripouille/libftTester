@@ -12,6 +12,7 @@ extern "C"
 void freeList(t_list *head) {if (head) freeList(head->next); free(head);}
 void addOne(void * p) {++*(int*)p;}
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
@@ -23,7 +24,7 @@ int main(void)
 		ft_lstadd_back(&l, ft_lstnew(tab + i));
 	ft_lstiter(l, addOne);
 	t_list * tmp = l;
-	for (int i = 0; i < 4; ++i)
+	/* 1 2 3 4 */ for (int i = 0; i < 4; ++i)
 	{
 		check(*(int*)tmp->content == i + 1);
 		tmp = tmp->next;

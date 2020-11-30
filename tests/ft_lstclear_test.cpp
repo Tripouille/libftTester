@@ -11,6 +11,7 @@ extern "C"
 
 void freeList(t_list *head) {if (head) freeList(head->next); free(head);}
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
@@ -20,7 +21,8 @@ int main(void)
 	for (int i = 0; i < 10; ++i)
 		ft_lstadd_front(&l, ft_lstnew(malloc(1)));
 	ft_lstclear(&l, free);
-	check(l == 0);
+	/* 1 */ check(l == 0);
+	/* 2 All other checks are done by valgrind */
 	cout << ENDL;
 	return (0);
 }

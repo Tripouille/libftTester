@@ -8,13 +8,14 @@ extern "C"
 #include "sigsegv.hpp"
 #include "check.hpp"
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_strlen\t: ";
 
-	check(ft_strlen("123") == 3);
-	check(ft_strlen("") == 0);
+	/* 1 */ check(ft_strlen("123") == 3);
+	/* 2 */ check(ft_strlen("") == 0);
 	cout << ENDL;
 	return (0);
 }

@@ -10,26 +10,27 @@ extern "C"
 #include <string.h>
 #include <climits>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_itoa\t\t: ";
 
 	char * s = ft_itoa(INT_MAX);
-	check(!strcmp(s, to_string(INT_MAX).c_str()));
-	mcheck(s, strlen(to_string(INT_MAX).c_str())); free(s);
+	/* 1 */ check(!strcmp(s, to_string(INT_MAX).c_str()));
+	/* 2 */ mcheck(s, strlen(to_string(INT_MAX).c_str())); free(s);
 
 	s = ft_itoa(INT_MIN);
-	check(!strcmp(s, to_string(INT_MIN).c_str()));
-	mcheck(s, strlen(to_string(INT_MIN).c_str())); free(s);
+	/* 3 */ check(!strcmp(s, to_string(INT_MIN).c_str()));
+	/* 4 */ mcheck(s, strlen(to_string(INT_MIN).c_str())); free(s);
 
 	s = ft_itoa(0);
-	check(!strcmp(s, to_string(0).c_str()));
-	mcheck(s, strlen(to_string(0).c_str())); free(s);
+	/* 5 */ check(!strcmp(s, to_string(0).c_str()));
+	/* 6 */ mcheck(s, strlen(to_string(0).c_str())); free(s);
 
 	s = ft_itoa(42);
-	check(!strcmp(s, to_string(42).c_str()));
-	mcheck(s, strlen(to_string(42).c_str())); free(s);
+	/* 7 */ check(!strcmp(s, to_string(42).c_str()));
+	/* 8 */ mcheck(s, strlen(to_string(42).c_str())); free(s);
 	cout << ENDL;
 	return (0);
 }

@@ -9,6 +9,7 @@ extern "C"
 #include "check.hpp"
 #include <string.h>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
@@ -17,10 +18,10 @@ int main(void)
 	char s[] = "tripouille";
 	char sCpy[] = "tripouille";
 	char s2[] = "trifouille";
-	check(ft_strncmp(s, s2, 0) == 0);
-	check(ft_strncmp(s, s2, 3) == 0);
-	check(ft_strncmp(s, s2, 4) == 'p' - 'f');
-	check(ft_strncmp(s, sCpy, -1) == 0);
+	/* 1 */ check(ft_strncmp(s, s2, 0) == 0);
+	/* 2 */ check(ft_strncmp(s, s2, 3) == 0);
+	/* 3 */ check(ft_strncmp(s, s2, 4) == 'p' - 'f');
+	/* 4 */ check(ft_strncmp(s, sCpy, -1) == 0);
 	cout << ENDL;
 	return (0);
 }

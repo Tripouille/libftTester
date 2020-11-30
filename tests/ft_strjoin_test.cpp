@@ -9,26 +9,27 @@ extern "C"
 #include "check.hpp"
 #include <string.h>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_strjoin\t: ";
 
 	char * s = ft_strjoin("tripouille", "42");
-	check(!strcmp(s, "tripouille42"));
-	mcheck(s, strlen("tripouille") + strlen("42") + 1); free(s);
+	/* 1 */ check(!strcmp(s, "tripouille42"));
+	/* 2 */ mcheck(s, strlen("tripouille") + strlen("42") + 1); free(s);
 
 	s = ft_strjoin("", "42");
-	check(!strcmp(s, "42"));
-	mcheck(s, strlen("") + strlen("42") + 1); free(s);
+	/* 3 */ check(!strcmp(s, "42"));
+	/* 4 */ mcheck(s, strlen("") + strlen("42") + 1); free(s);
 
 	s = ft_strjoin("42", "");
-	check(!strcmp(s, "42"));
-	mcheck(s, strlen("42") + strlen("") + 1); free(s);
+	/* 5 */ check(!strcmp(s, "42"));
+	/* 6 */ mcheck(s, strlen("42") + strlen("") + 1); free(s);
 
 	s = ft_strjoin("", "");
-	check(!strcmp(s, ""));
-	mcheck(s, strlen("") + strlen("") + 1); free(s);
+	/* 7 */ check(!strcmp(s, ""));
+	/* 8 */ mcheck(s, strlen("") + strlen("") + 1); free(s);
 	cout << ENDL;
 	return (0);
 }

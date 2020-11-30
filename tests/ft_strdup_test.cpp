@@ -9,18 +9,19 @@ extern "C"
 #include "check.hpp"
 #include <string.h>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_strdup\t: ";
 
 	char * s = ft_strdup((char*)"coucou");
-	check(!strcmp(s, "coucou"));
-	mcheck(s, strlen("coucou") + 1); free(s);
+	/* 1 */ check(!strcmp(s, "coucou"));
+	/* 2 */ mcheck(s, strlen("coucou") + 1); free(s);
 	
 	s = ft_strdup((char*)"");
-	check(!strcmp(s, ""));
-	mcheck(s, 1); free(s);
+	/* 3 */ check(!strcmp(s, ""));
+	/* 4 */ mcheck(s, 1); free(s);
 	cout << ENDL;
 	return (0);
 }

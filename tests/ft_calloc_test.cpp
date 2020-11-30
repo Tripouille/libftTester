@@ -9,6 +9,7 @@ extern "C"
 #include "check.hpp"
 #include <string.h>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
@@ -16,8 +17,8 @@ int main(void)
 
 	void * p = ft_calloc(2, 2);
 	char e[] = {0, 0, 0, 0};
-	check(!memcmp(p, e, 4));
-	mcheck(p, 4); free(p);
+	/* 1 */ check(!memcmp(p, e, 4));
+	/* 2 */ mcheck(p, 4); free(p);
 	cout << ENDL;
 	return (0);
 }

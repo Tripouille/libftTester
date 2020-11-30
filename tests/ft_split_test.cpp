@@ -16,30 +16,31 @@ void freeTab(char * * tab)
 	free(tab);
 }
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_split\t: ";
 
 	char * * tab = ft_split("  tripouille  42  ", ' ');
-	mcheck(tab, sizeof(char *) * 3);
+	/* 1 */ mcheck(tab, sizeof(char *) * 3);
 
-	check(!strcmp(tab[0], "tripouille"));
-	mcheck(tab[0], strlen("tripouille") + 1);
+	/* 2 */ check(!strcmp(tab[0], "tripouille"));
+	/* 3 */ mcheck(tab[0], strlen("tripouille") + 1);
 
-	check(!strcmp(tab[1], "42"));
-	mcheck(tab[1], strlen("42") + 1);
+	/* 4 */ check(!strcmp(tab[1], "42"));
+	/* 5 */ mcheck(tab[1], strlen("42") + 1);
 
-	check(tab[2] == NULL);
+	/* 6 */ check(tab[2] == NULL);
 	freeTab(tab);
 
 	tab = ft_split("tripouille", 0);
-	check(!strcmp(tab[0], "tripouille"));
-	check(tab[1] == NULL);
+	/* 7 */ check(!strcmp(tab[0], "tripouille"));
+	/* 8 */ check(tab[1] == NULL);
 	freeTab(tab);
 
 	tab = ft_split("     ", ' ');
-	check(tab[0] == NULL);
+	/* 9 */ check(tab[0] == NULL);
 	free(tab);
 	cout << ENDL;
 	return (0);

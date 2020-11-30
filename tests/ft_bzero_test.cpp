@@ -9,6 +9,7 @@ extern "C"
 #include "check.hpp"
 #include <string.h>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
@@ -17,11 +18,12 @@ int main(void)
 	char tab[100];
 	memset(tab, 'A', 100);
 	ft_bzero(tab, 0);
-	check(tab[0] == 'A');
+	/* 1 */ check(tab[0] == 'A');
 	ft_bzero(tab, 42);
 	int i = 0;
-	for (; i < 100 && tab[i] == 0; ++i);
-	check(i == 42 && tab[42] == 'A');
+	for (; i < 100 && tab[i] == 0; ++i)
+		;
+	/* 2 */ check(i == 42 && tab[42] == 'A');
 	cout << ENDL;
 	return (0);
 }

@@ -9,6 +9,7 @@ extern "C"
 #include "check.hpp"
 #include <string.h>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
@@ -17,12 +18,13 @@ int main(void)
 	char dest[100];
 	memset(dest, 'A', 100);
 	ft_memcpy(dest, "coucou", 0);
-	check(dest[0] == 'A');
+	/* 1 */ check(dest[0] == 'A');
 	char src[] = {0, 0};
 	ft_memcpy(dest, src, 2);
 	int i = 0;
-	for (; i < 100 && dest[i] == 0; ++i);
-	check (i == 2 && dest[2] == 'A');
+	for (; i < 100 && dest[i] == 0; ++i)
+		;
+	/* 2 */ check(i == 2 && dest[2] == 'A');
 	cout << ENDL;
 	return (0);
 }

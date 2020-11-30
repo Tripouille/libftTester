@@ -9,15 +9,16 @@ extern "C"
 #include "check.hpp"
 #include <string.h>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_isascii\t: ";
 
-	check(!ft_isascii(-1));
-	check(ft_isascii(0));
-	check(!ft_isascii(128));
-	check(ft_isascii(127));
+	/* 1 */ check(!ft_isascii(-1));
+	/* 2 */ check(ft_isascii(0));
+	/* 3 */ check(!ft_isascii(128));
+	/* 4 */ check(ft_isascii(127));
 	cout << ENDL;
 	return (0);
 }

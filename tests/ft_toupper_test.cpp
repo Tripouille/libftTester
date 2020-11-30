@@ -9,15 +9,16 @@ extern "C"
 #include "check.hpp"
 #include <string.h>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
 	cout << FG_LGRAY << "ft_toupper\t: ";
 	
-	check(ft_toupper('a' - 1) == 'a' - 1);
-	check(ft_toupper('a') == 'A');
-	check(ft_toupper('z' + 1) == 'z' + 1);
-	check(ft_toupper('z') == 'Z');
+	/* 1 */ check(ft_toupper('a' - 1) == 'a' - 1);
+	/* 2 */ check(ft_toupper('a') == 'A');
+	/* 3 */ check(ft_toupper('z' + 1) == 'z' + 1);
+	/* 4 */ check(ft_toupper('z') == 'Z');
 	cout << ENDL;
 	return (0);
 }

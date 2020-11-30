@@ -9,6 +9,7 @@ extern "C"
 #include "check.hpp"
 #include <string.h>
 
+int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
@@ -20,10 +21,10 @@ int main(void)
 	char sResult[] = {67, 68, 67, 68, 69, 0, 45};
 	char sResult2[] = {67, 67, 68, 68, 69, 0, 45};
 
-	check(ft_memmove(s0, s, 7) == s0 && !memcmp(s, s0, 7)); //Post 0
-	check(ft_memmove(s, s + 2, 0) && !memcmp(s, sCpy, 7)); //0 move
-	check(ft_memmove(s, s + 2, 2) == s && !memcmp(s, sResult, 7)); //forward
-	check(ft_memmove(sResult + 1, sResult, 2) == sResult + 1 && !memcmp(sResult, sResult2, 7)); //reverse
+	/* 1 */ check(ft_memmove(s0, s, 7) == s0 && !memcmp(s, s0, 7)); //Post 0
+	/* 2 */ check(ft_memmove(s, s + 2, 0) && !memcmp(s, sCpy, 7)); //0 move
+	/* 3 */ check(ft_memmove(s, s + 2, 2) == s && !memcmp(s, sResult, 7)); //forward
+	/* 4 */ check(ft_memmove(sResult + 1, sResult, 2) == sResult + 1 && !memcmp(sResult, sResult2, 7)); //reverse
 	cout << ENDL;
 	return (0);
 }
