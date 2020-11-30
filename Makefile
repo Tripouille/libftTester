@@ -28,13 +28,16 @@ $(VBONUS): v%: bonus_start
 $(VSOPEN): vs%: v%
 	@code $(TESTS_PATH)ft_$*_test.cpp
 
-mandatory_start:
+mandatory_start: update
 	make -C ..
 	@tput setaf 4 && echo [Mandatory]
 
-bonus_start:
+bonus_start: update
 	make bonus -C ..
 	@tput setaf 5 && echo [Bonus]
+
+update:
+	@git pull
 
 m: $(MANDATORY)
 b: $(filter-out lstclear lstdelone, $(BONUS)) vlstdelone vlstclear
