@@ -39,7 +39,7 @@ bonus_start:
 m: $(MANDATORY)
 b: $(filter-out lstclear lstdelone, $(BONUS)) vlstdelone vlstclear
 a: m b
-vm: $(filter-out vitoa, $(VMANDATORY)) itoa
+vm: $(VMANDATORY)
 vb: $(VBONUS)
 va: vm vb
 
