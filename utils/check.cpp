@@ -7,7 +7,7 @@ void check(bool succes)
 	if (succes)
 		cout << FG_GREEN << iTest++ << ".OK ";
 	else
-		cout << FG_RED << iTest++ << "KO ";
+		cout << FG_RED << iTest++ << ".KO ";
 }
 
 void mcheck(void * p, size_t required_size)
