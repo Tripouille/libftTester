@@ -25,6 +25,7 @@ int main(void)
 	/* 5 */ check(ft_strnstr(empty, "", -1) == empty);
 	/* 6 */ check(ft_strnstr(empty, "", 0) == empty);
 	/* 7 */ check(ft_strnstr(empty, "coucou", -1) == 0);
+	/* 8 */ check(ft_strnstr(haystack, "aaabc", 5) == haystack);
 	cout << ENDL;
 	return (0);
 }
