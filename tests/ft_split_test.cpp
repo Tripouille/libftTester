@@ -42,6 +42,11 @@ int main(void)
 	tab = ft_split("     ", ' ');
 	/* 9 */ check(tab[0] == NULL);
 	free(tab);
+
+	char * invalidReadCheck = new char; *invalidReadCheck = 0;
+	tab = ft_split(invalidReadCheck, 0);
+	/* 10 */ check(tab[0] == NULL); delete invalidReadCheck;
+	free(tab);
 	cout << ENDL;
 	return (0);
 }
