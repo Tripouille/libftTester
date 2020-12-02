@@ -40,7 +40,7 @@ update:
 	@git pull
 
 m: $(MANDATORY)
-b: $(filter-out lstclear lstdelone, $(BONUS)) vlstdelone vlstclear
+b: $(BONUS)
 a: m b
 vm: $(VMANDATORY)
 vb: $(VBONUS)

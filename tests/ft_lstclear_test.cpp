@@ -15,7 +15,7 @@ int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
-	cout << FG_LGRAY << "ft_lstclear\t: " << FG_LYELLOW << BOLD << "CHECK WITH VALGRIND" << RESET_ALL << " ";
+	cout << FG_LGRAY << "ft_lstclear\t: ";
 
 	t_list * l =  ft_lstnew(malloc(1));
 	for (int i = 0; i < 10; ++i)
