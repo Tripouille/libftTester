@@ -21,11 +21,10 @@ make vs[funtion name] = lauch associated test with valgrind then open the corres
 
 # Outputs
 
-![alt text](https://i.imgur.com/Mx1jePL.png)
-![alt text](https://i.imgur.com/HkCGPjC.png)
+![alt text](https://i.imgur.com/en8rJpS.png)
+![alt text](https://i.imgur.com/ZvzhIoZ.png)
 
 MOK / MKO = test about your malloc size (this shouldn't be tested by moulinette)  
-lstclear and lstdelone are force tested with valgrind (CHECK WITH VALGRIND) even if you run make b (for safety) if you want force without valgrind you should use make lstclear and make lstdelone  
 
 # Report bugs / Improvement
 Contact me on slack or discord : jgambard
