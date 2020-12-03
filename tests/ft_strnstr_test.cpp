@@ -26,6 +26,7 @@ int main(void)
 	/* 6 */ check(ft_strnstr(empty, "", 0) == empty);
 	/* 7 */ check(ft_strnstr(empty, "coucou", -1) == 0);
 	/* 8 */ check(ft_strnstr(haystack, "aaabc", 5) == haystack);
+	static char * s = (char *)malloc(1); (void)s;
 	cout << ENDL;
 	return (0);
 }
