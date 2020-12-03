@@ -34,12 +34,12 @@ $(MAIL): send%:
 	cat ../ft_$*.c | mail -s "libftTester Improvement $*" jgambard@student.42lyon.fr
 
 mandatory_start: update message
-	@tput setaf 0
+	@tput setaf 6
 	make -C ..
 	@tput setaf 4 && echo [Mandatory]
 
 bonus_start: update message
-	@tput setaf 0
+	@tput setaf 6
 	make bonus -C ..
 	@tput setaf 5 && echo [Bonus]
 
