@@ -16,7 +16,7 @@ make va = launch mandatory tests + bonus tests with valgrind
 
 make [funtion name] = lauch associated test ex: make calloc  
 make v[funtion name] = lauch associated test with valgrind ex: make vcalloc  
-make vs[funtion name] = lauch associated test with valgrind then open the corresponding tests in vscode ex: make vscalloc  
+make vs[funtion name] = open the corresponding tests in vscode ex: make vscalloc  
 
 
 # Outputs
@@ -27,4 +27,4 @@ make vs[funtion name] = lauch associated test with valgrind then open the corres
 MOK / MKO = test about your malloc size (this shouldn't be tested by moulinette)  
 
 # Report bugs / Improvement
-Contact me on slack or discord : jgambard
+Contact me on slack or discord : jgambard or use make sendfunction ex make sendsubstr if all your tests were OK and the moulinette KO you.  
