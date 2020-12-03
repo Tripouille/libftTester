@@ -20,6 +20,7 @@ int main(void)
 	/* 2 */ check(ft_memchr(s, 0, 1) == s);
 	/* 3 */ check(ft_memchr(s, 2, 3) == s + 2);
 	/* 4 */ check(ft_memchr(s, 6, 6) == NULL);
+	/* 5 */ check(ft_memchr(s, 2 + 256, 3) == s + 2); //Cast check
 	cout << ENDL;
 	return (0);
 }
