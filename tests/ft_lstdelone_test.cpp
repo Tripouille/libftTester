@@ -15,7 +15,7 @@ int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv); (void)iTest;
-	cout << FG_LGRAY << "ft_lstdelone\t: " << FG_GREEN << "0";
+	cout << FG_LGRAY << "ft_lstdelone\t: " << FG_GREEN << "(no tests, checked with -fsanitize=address)";
 
 	t_list * l =  ft_lstnew(malloc(1));
 	ft_lstdelone(l, free);
