@@ -30,6 +30,18 @@ int main(void)
 	s = ft_strtrim("   xxx   xxx", " x");
 	/* 7 */ check(!strcmp(s, ""));
 	/* 8 */ mcheck(s, 1); free(s);
+
+	s = ft_strtrim("", "123");
+	/* 9 */ check(!strcmp(s, ""));
+	/* 10 */ mcheck(s, 1); free(s);
+
+	s = ft_strtrim("123", "");
+	/* 11 */ check(!strcmp(s, "123"));
+	/* 12 */ mcheck(s, 4); free(s);
+
+	s = ft_strtrim("", "");
+	/* 13 */ check(!strcmp(s, ""));
+	/* 14 */ mcheck(s, 1); free(s);
 	cout << ENDL;
 	return (0);
 }
