@@ -18,8 +18,8 @@ int main(void)
 	cout << FG_LGRAY << "ft_lstdelone\t: " << FG_GREEN << "(no tests, checked with -fsanitize=address)";
 
 	t_list * l =  ft_lstnew(malloc(1));
-	ft_lstdelone(l, free);
-	/* 0 All checks are done by valgrind */ 
+	ft_lstdelone(l, free); l = 0;
+	/* 0 All checks are done by -fsanitize=address / valgrind */ 
 	cout << ENDL;
 	return (0);
 }
