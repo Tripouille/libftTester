@@ -14,8 +14,8 @@ make vm = launch mandatory tests with valgrind
 make vb = launch bonus tests with valgrind   
 make va = launch mandatory tests + bonus tests with valgrind  
 
-make [funtion name] = lauch associated test ex: make calloc  
-make v[funtion name] = lauch associated test with valgrind ex: make vcalloc  
+make [funtion name] = launch associated test ex: make calloc  
+make v[funtion name] = launch associated test with valgrind ex: make vcalloc  
 make vs[funtion name] = open the corresponding tests in vscode ex: make vscalloc  
 
 
