@@ -8,7 +8,6 @@ extern "C"
 #include "sigsegv.hpp"
 #include "check.hpp"
 #include <string.h>
-#include <bsd/string.h>
 
 int iTest = 1;
 int main(void)
