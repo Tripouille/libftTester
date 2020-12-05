@@ -13,7 +13,7 @@ MAIL			= $(addprefix send, $(MANDATORY)) $(addprefix send, $(BONUS))
 
 
 CC		= clang++
-CFLAGS	= -g3 -std=c++11 -I utils/ -I..
+CFLAGS	= -g3 -std=c++11 -I utils/ -I.. -lbsd
 
 $(MANDATORY): %: mandatory_start
 	@$(CC) $(CFLAGS) -fsanitize=address $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && ./a.out && rm -f a.out
