@@ -47,6 +47,12 @@ int main(void)
 	tab = ft_split(invalidReadCheck, 0);
 	/* 10 */ check(tab[0] == NULL); delete invalidReadCheck;
 	free(tab);
+
+	tab = ft_split("chinimala", ' ');
+	/* 11 */ mcheck(tab, sizeof(char *) * 2);
+	/* 12 */ check(!strcmp(tab[0], "chinimala"));
+	/* 13 */ check(tab[1] == NULL);
+	freeTab(tab);
 	cout << ENDL;
 	return (0);
 }
