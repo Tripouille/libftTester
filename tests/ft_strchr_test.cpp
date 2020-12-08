@@ -19,6 +19,7 @@ int main(void)
 	/* 2 */ check(ft_strchr(s, 'l') == s + 7);
 	/* 3 */ check(ft_strchr(s, 'z') == 0);
 	/* 4 */ check(ft_strchr(s, 0) == s + strlen(s));
+	/* 5 */ check(ft_strchr(s, 't' + 256) == s);
 	cout << ENDL;
 	return (0);
 }

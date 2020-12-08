@@ -21,6 +21,7 @@ int main(void)
 	/* 3 */ check(ft_strrchr(s2, 'l') == s2 + 9);
 	/* 4 */ check(ft_strrchr(s, 'z') == 0);
 	/* 5 */ check(ft_strrchr(s, 0) == s + strlen(s));
+	/* 6 */ check(ft_strrchr(s, 't' + 256) == s);
 	cout << ENDL;
 	return (0);
 }
