@@ -26,6 +26,11 @@ int main(void)
 	s = ft_substr("tripouille", 100, 1);
 	/* 5 */ check(!strcmp(s, ""));
 	/* 6 */ mcheck(s, 1); free(s);
+
+	char * str = strdup("1");
+	s = ft_substr(str, 42, 42000000);
+	/* 7 */ check(!strcmp(s, ""));
+	/* 8 */ mcheck(s, 1); free(s); free(str);
 	cout << ENDL;
 	return (0);
 }
