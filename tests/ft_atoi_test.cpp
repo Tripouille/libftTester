@@ -29,6 +29,7 @@ int main(void)
 	/* 9 */ check(ft_atoi((e + "+101").c_str()) == 101);
 	/* 10 */ check(ft_atoi((e + to_string(INT_MAX)).c_str()) == INT_MAX);
 	/* 11 */ check(ft_atoi((e + to_string(INT_MIN)).c_str()) == INT_MIN);
+	/* 12 */ check(ft_atoi("-+42") == 0);
 	cout << ENDL;
 	return (0);
 }
