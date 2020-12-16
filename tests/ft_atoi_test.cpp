@@ -30,6 +30,11 @@ int main(void)
 	/* 10 */ check(ft_atoi((e + to_string(INT_MAX)).c_str()) == INT_MAX);
 	/* 11 */ check(ft_atoi((e + to_string(INT_MIN)).c_str()) == INT_MIN);
 	/* 12 */ check(ft_atoi("-+42") == 0);
+	/* 13 */ check(ft_atoi("+-42") == 0);
+	/* 14 */ check(ft_atoi((string("+") + e + "42").c_str()) == 0);
+	/* 15 */ check(ft_atoi((string("-") + e + "42").c_str()) == 0);
+	/* 16 */ check(ft_atoi((string("1") + e + "42").c_str()) == 1);
+	/* 17 */ check(ft_atoi((string("-1") + e + "42").c_str()) == -1);
 	cout << ENDL;
 	return (0);
 }
