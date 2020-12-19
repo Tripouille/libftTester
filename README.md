@@ -1,6 +1,6 @@
 # libftTester (2019+)
 
-Tester for the project libft of 42 school.  
+Tester for the libft project of 42 school.  
 *If all your tests are OK and the moulinette KO you, please send an email with make sendfunction ex: make sendsubstr or contact me on slack/discord for improvements*  
 Clone this tester in your libft repository. (works on linux and mac)  
 ![alt text](https://i.imgur.com/EWmbpxx.png)
