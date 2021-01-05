@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -24,6 +25,7 @@ int main(void)
 	/* 3 */ check(ft_memcmp(s, s2, 1) > 0);
 	/* 4 */ check(ft_memcmp(s2, s, 1) < 0);
 	/* 5 */ check(ft_memcmp(s2, s3, 4) != 0);
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

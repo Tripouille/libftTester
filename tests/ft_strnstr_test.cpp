@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -29,6 +30,7 @@ int main(void)
 	/* 9 */ check(ft_strnstr(empty, "12345", 5) == 0); free(empty);
 	/* 10 */ check(ft_strnstr(haystack, "abcd", 9) == haystack + 5);
 	/* 11 */ check(ft_strnstr(haystack, "cd", 8) == NULL);
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

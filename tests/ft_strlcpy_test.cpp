@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -21,6 +22,7 @@ int main(void)
 	/* 2 */ check(ft_strlcpy(dest, src, 1) == strlen(src) && dest[0] == 0 && dest[1] == 'A');
 	/* 3 */ check(ft_strlcpy(dest, src, 2) == strlen(src) && dest[0] == 'c' && dest[1] == 0);
 	/* 4 */ check(ft_strlcpy(dest, src, -1) == strlen(src) && !strcmp(src, dest) && dest[strlen(src) + 1] == 'A');
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

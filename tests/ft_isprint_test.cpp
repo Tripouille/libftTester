@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -19,6 +20,7 @@ int main(void)
 	/* 2 */ check(ft_isprint(' '));
 	/* 3 */ check(!ft_isprint('~' + 1));
 	/* 4 */ check(ft_isprint('~'));
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

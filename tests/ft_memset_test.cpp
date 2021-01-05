@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -24,6 +25,7 @@ int main(void)
 	for (; i < 100 && tab[i] == 'A'; ++i)
 		;
 	/* 2 */ check(i == 42 && tab[42] == 0);
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

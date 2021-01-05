@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -15,11 +16,11 @@ int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv); (void)iTest;
-	cout << FG_LGRAY << "ft_lstdelone\t: " << FG_GREEN << "(no tests, checked with -fsanitize=address)";
+	cout << FG_LGRAY << "ft_lstdelone\t: " << FG_GREEN;
 
 	t_list * l =  ft_lstnew(malloc(1));
 	ft_lstdelone(l, free); l = 0;
-	/* 0 All checks are done by -fsanitize=address / valgrind */ 
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

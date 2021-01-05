@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -23,6 +24,7 @@ int main(void)
 	ft_lstclear(&l, free);
 	/* 1 */ check(l == 0);
 	/* 2 All other checks are done by valgrind */
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

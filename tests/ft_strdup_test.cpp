@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -22,6 +23,7 @@ int main(void)
 	s = ft_strdup((char*)"");
 	/* 3 */ check(!strcmp(s, ""));
 	/* 4 */ mcheck(s, 1); free(s);
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

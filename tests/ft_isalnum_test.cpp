@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -27,6 +28,7 @@ int main(void)
 	/* 10 */ check(ft_isalnum('0'));
 	/* 11 */ check(!ft_isalnum('9' + 1));
 	/* 12 */ check(ft_isalnum('9'));
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -50,6 +51,7 @@ int main(void)
 	/* 16 */ check(ft_strlcat(dest, "123", 4) == 3 && !strcmp(dest, "123"));
 	memset(dest, 0, 30);
 	/* 17 */ check(ft_strlcat(dest, "123", 0) == 3 && !strcmp(dest, ""));
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

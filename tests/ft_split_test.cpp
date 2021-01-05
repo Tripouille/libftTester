@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -53,6 +54,7 @@ int main(void)
 	/* 12 */ check(!strcmp(tab[0], "chinimala"));
 	/* 13 */ check(tab[1] == NULL);
 	freeTab(tab);
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

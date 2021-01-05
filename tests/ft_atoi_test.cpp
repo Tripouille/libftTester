@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -35,6 +36,7 @@ int main(void)
 	/* 15 */ check(ft_atoi((string("-") + e + "42").c_str()) == 0);
 	/* 16 */ check(ft_atoi((string("1") + e + "42").c_str()) == 1);
 	/* 17 */ check(ft_atoi((string("-1") + e + "42").c_str()) == -1);
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

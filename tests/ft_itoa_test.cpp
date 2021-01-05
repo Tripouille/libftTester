@@ -1,6 +1,7 @@
 extern "C"
 {
 #define new tripouille
+#include "leak.h"
 #include "libft.h"
 #undef new
 }
@@ -31,6 +32,7 @@ int main(void)
 	s = ft_itoa(42);
 	/* 7 */ check(!strcmp(s, to_string(42).c_str()));
 	/* 8 */ mcheck(s, strlen(to_string(42).c_str()) + 1); free(s);
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

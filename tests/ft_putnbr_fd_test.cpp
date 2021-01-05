@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -47,6 +48,7 @@ int main(void)
 	/* 4 */ check(!strcmp(s, to_string(INT_MIN).c_str()));
 	unlink("./tripouille");
 
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

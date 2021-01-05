@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -27,6 +28,7 @@ int main(void)
 	/* 4 */ check(l->next->content == (void*)1);
 	/* 5 */ check(l->next->next == 0);
 	freeList(l);
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }

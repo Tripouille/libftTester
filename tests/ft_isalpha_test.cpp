@@ -2,6 +2,7 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
+#include "leak.h"
 #undef new
 }
 
@@ -23,6 +24,7 @@ int main(void)
 	/* 6 */ check(ft_isalpha('A'));
 	/* 7 */ check(!ft_isalpha('Z' + 1));
 	/* 8 */ check(ft_isalpha('Z'));
+	showLeaks();
 	cout << ENDL;
 	return (0);
 }
