@@ -1,8 +1,8 @@
 extern "C"
 {
 #define new tripouille
-#include "libft.h"
 #include "leak.h"
+#include "libft.h"
 #undef new
 }
 
@@ -13,8 +13,8 @@ extern "C"
 int iTest = 1;
 int main(void)
 {
-	signal(SIGSEGV, sigsegv);
-	cout << FG_LGRAY << "ft_memset\t: ";
+	signal(SIGSEGV, sigsegv);  
+	cout << FG_LGRAY << "ft_memset\t: "; init_hook();
 	
 	char tab[100];
 	memset(tab, 0, 100);
@@ -25,7 +25,6 @@ int main(void)
 	for (; i < 100 && tab[i] == 'A'; ++i)
 		;
 	/* 2 */ check(i == 42 && tab[42] == 0);
-	showLeaks();
-	cout << ENDL;
+	showLeaks(); cout << ENDL;
 	return (0);
 }

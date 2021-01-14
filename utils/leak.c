@@ -1,19 +1,39 @@
+# define _GNU_SOURCE
 #include "leak.h"
 #include <stdio.h>
+#include <unistd.h>
+#include <malloc.h>
 
 t_mlist * mallocList = NULL;
 
-void __wrap_free(void * p)
+void * old_malloc_hook;
+void * old_free_hook;
+
+void init_hook(void)
 {
-    mallocListRemove(p);
-    return (__real_free(p));
+    void * old_malloc_hook = __malloc_hook;
+    void * old_free_hook = __free_hook;
+    __malloc_hook = my_malloc;
+    __free_hook = my_free;
 }
 
-void * __wrap_malloc(size_t size)
+void * my_malloc(size_t size)
 {
-    void * p = __real_malloc(size);
+    __malloc_hook = old_malloc_hook;
+    write(1, "malloc\n", 7);
+    void * p = malloc(size);
     mallocListAdd(p, size);
+    __malloc_hook = my_malloc;
     return (p);
+}
+
+void my_free(void * p)
+{
+    __free_hook = old_free_hook;
+    write(1, "free\n", 5);
+    free(p);
+    mallocListRemove(p);
+    __free_hook = my_free;
 }
 
 void mallocListAdd(void * p, size_t size)
@@ -26,7 +46,7 @@ void mallocListAdd(void * p, size_t size)
         prev = *actual;
         actual = &((*actual)->next);
     }
-    *actual = __real_malloc(sizeof(t_mlist));
+    *actual = malloc(sizeof(t_mlist));
     (*actual)->prev = prev;
     (*actual)->p = p;
     (*actual)->size = size;
@@ -47,7 +67,7 @@ void mallocListRemove(void * p)
             actual->prev->next = actual->next;
         else
             mallocList = actual->next;
-        __real_free(actual);
+        free(actual);
     }
 }
 
@@ -64,7 +84,7 @@ void showLeaks(void)
             printf(" [%p : %lu]", mallocList->p, mallocList->size);
             prev = mallocList;
             mallocList = mallocList->next;
-            __real_free(prev);
+            free(prev);
         }
     }
 }

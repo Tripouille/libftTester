@@ -1,7 +1,6 @@
 #ifndef LEAK_HPP
-#define LEAK_HPP
-
-#include <stdlib.h>
+# define LEAK_HPP
+# include <stdlib.h>
 
 typedef struct s_mlist
 {
@@ -13,12 +12,10 @@ typedef struct s_mlist
 
 extern t_mlist * mallocList;
 
-extern void __real_free(void * p);
-void __wrap_free(void * p);
+void * my_malloc(size_t size);
+void my_free(void * p);
 
-extern void * __real_malloc(size_t size);
-void * __wrap_malloc(size_t size);
-
+void init_hook(void);
 void mallocListAdd(void * p, size_t size);
 void mallocListRemove(void * p);
 void showLeaks(void);

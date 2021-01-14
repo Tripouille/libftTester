@@ -1,7 +1,7 @@
 .DEFAULT_GOAL	:= va
 UTILS			= utils/sigsegv.cpp utils/color.cpp utils/check.cpp utils/leak.o
 TESTS_PATH		= tests/
-MANDATORY		= memset bzero memcpy memccpy memmove memchr memcmp strlen isalpha isdigit isalnum \
+MANDATORY		= memset #bzero memcpy memccpy memmove memchr memcmp strlen isalpha isdigit isalnum \
 				isascii isprint toupper tolower strchr strrchr strncmp strlcpy strlcat strnstr \
 				atoi calloc strdup substr strjoin strtrim split itoa strmapi putchar_fd putstr_fd \
 				putendl_fd putnbr_fd
@@ -12,16 +12,16 @@ VSOPEN			= $(addprefix vs, $(MANDATORY)) $(addprefix vs, $(BONUS))
 MAIL			= $(addprefix send, $(MANDATORY)) $(addprefix send, $(BONUS))
 
 CC		= clang++
-CFLAGS	= -g3 -std=c++11 -Wl,--wrap=free,--wrap=malloc -I utils/ -I..
+CFLAGS	= -g3 -std=c++11 -I utils/ -I..
 
 $(MANDATORY): %: mandatory_start
-	@$(CC) $(CFLAGS) -fsanitize=address $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && ./a.out && rm -f a.out
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && ./a.out && rm -f a.out
 
 $(VMANDATORY): v%: mandatory_start
 	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && valgrind -q --leak-check=full ./a.out && rm -f a.out
 
 $(BONUS): %: bonus_start
-	@$(CC) $(CFLAGS) -fsanitize=address $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && ./a.out && rm -f a.out
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && ./a.out && rm -f a.out
 
 $(VBONUS): v%: bonus_start
 	@$(CC) $(CFLAGS)  $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && valgrind -q --leak-check=full ./a.out && rm -f a.out
@@ -49,7 +49,7 @@ message:
 	@tput setaf 3 && echo If all your tests are OK and the moulinette KO you, please send an email with make sendfunction ex: make sendsubstr
 
 leak:
-	@gcc -c utils/leak.c -o utils/leak.o
+	@gcc -w -c utils/leak.c -o utils/leak.o
 
 m: $(MANDATORY) 
 b: $(BONUS)
