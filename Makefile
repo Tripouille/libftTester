@@ -55,4 +55,4 @@ clean:
 fclean:
 	make fclean -C .. && rm -rf a.out*
 
-.PHONY:	mandatory_start m bonus_start b a clean update message $(VSOPEN) $(MAIL)
+.PHONY:	mandatory_start m bonus_start b a fclean clean update message $(VSOPEN) $(MAIL)
