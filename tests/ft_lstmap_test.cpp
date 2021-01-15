@@ -2,12 +2,12 @@ extern "C"
 {
 #define new tripouille
 #include "libft.h"
-#include "leak.h"
 #undef new
 }
 
 #include "sigsegv.hpp"
 #include "check.hpp"
+#include "leaks.hpp"
 #include <string.h>
 
 void freeList(t_list *head) {if (head) freeList(head->next); free(head);}
@@ -17,7 +17,7 @@ int iTest = 1;
 int main(void)
 {
 	signal(SIGSEGV, sigsegv);
-	cout << FG_LGRAY << "ft_lstmap\t: ";
+	title("ft_lstmap\t: ")
 
 	int tab[] = {0, 1, 2, 3};
 	t_list * l =  ft_lstnew(tab);
@@ -36,8 +36,7 @@ int main(void)
 		check(*(int*)tmp->content == i + 1);
 		tmp = tmp->next;
 	}
-	freeList(l); ft_lstclear(&m, free);
-	showLeaks();
-	cout << ENDL;
+	freeList(l); ft_lstclear(&m, free); showLeaks();
+	write(1, "\n", 1);
 	return (0);
 }

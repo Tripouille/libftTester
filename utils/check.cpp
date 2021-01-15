@@ -1,31 +1,27 @@
 #include "check.hpp"
+#include "leaks.hpp"
 
 extern int iTest;
 
 void check(bool succes)
 {
 	if (succes)
-		cout << FG_GREEN << iTest++ << ".OK ";
+		{std::ostringstream ss; ss << FG_GREEN << iTest++ << ".OK "; write(1, ss.str().c_str(), ss.str().size());}
 	else
-		cout << FG_RED << iTest++ << ".KO ";
+		{std::ostringstream ss; ss << FG_RED << iTest++ << ".KO "; write(1, ss.str().c_str(), ss.str().size());}
 }
 
 void mcheck(void * p, size_t required_size)
 {
-	#ifdef __unix__
 	void * p2 = malloc(required_size); 
+	#ifdef __unix__
 	if (malloc_usable_size(p) == malloc_usable_size(p2))
-		cout << FG_GREEN << iTest++ << ".MOK ";
-	else
-		cout << FG_RED << iTest++ << ".MKO ";
-	free(p2);
 	#endif
 	#ifdef __APPLE__
-	void * p2 = malloc(required_size); 
 	if (malloc_size(p) == malloc_size(p2))
-		cout << FG_GREEN << iTest++ << ".MOK ";
-	else
-		cout << FG_RED << iTest++ << ".MKO ";
-	free(p2);
 	#endif
+		{std::ostringstream ss; ss << FG_GREEN << iTest++ << ".MOK "; write(1, ss.str().c_str(), ss.str().size());}
+	else
+		{std::ostringstream ss; ss << FG_RED << iTest++ << ".MKO "; write(1, ss.str().c_str(), ss.str().size());}
+	free(p2);
 }
