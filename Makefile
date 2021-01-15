@@ -12,11 +12,16 @@ MAIL			= $(addprefix send, $(MANDATORY)) $(addprefix send, $(BONUS))
 CC		= clang++
 CFLAGS	= -g3 -ldl -std=c++11 -I utils/ -I..
 
+UNAME = $(shell uname -s)
+ifeq ($(UNAME), Linux)
+	VALGRIND = valgrind -q --leak-check=full
+endif
+
 $(MANDATORY): %: mandatory_start
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && ./a.out && rm -f a.out
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && $(VALGRIND) ./a.out && rm -f a.out
 
 $(BONUS): %: bonus_start
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && ./a.out && rm -f a.out
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && $(VALGRIND) ./a.out && rm -f a.out
 
 $(VSOPEN): vs%:
 	@code $(TESTS_PATH)ft_$*_test.cpp
