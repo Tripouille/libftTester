@@ -45,7 +45,7 @@ update:
 message:
 	@tput setaf 3 && echo If all your tests are OK and the moulinette KO you, please send an email with make sendfunction ex: make sendsubstr
 
-dockerm dockerb dockera: docker%:
+$(addprefix docker, $(MANDATORY)) $(addprefix docker, $(BONUS)) dockerm dockerb dockera: docker%:
 	@docker rm -f mc > /dev/null 2>&1 || true
 	docker build -qt mi .
 	docker run -dti --name mc -v $(shell dirname $(shell pwd)):/project/ mi
