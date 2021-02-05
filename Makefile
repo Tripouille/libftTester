@@ -1,5 +1,5 @@
 .DEFAULT_GOAL	:= a
-UTILS			= utils/sigsegv.cpp utils/color.cpp utils/check.cpp utils/leaks.cpp
+UTILS			= $(addprefix utils/, sigsegv.cpp color.cpp check.cpp leaks.cpp)
 TESTS_PATH		= tests/
 MANDATORY		= memset bzero memcpy memccpy memmove memchr memcmp strlen isalpha isdigit isalnum \
 				isascii isprint toupper tolower strchr strrchr strncmp strlcpy strlcat strnstr \
@@ -42,8 +42,11 @@ bonus_start: update message
 update:
 	@git pull
 
-message:
+message: checkmakefile
 	@tput setaf 3 && echo If all your tests are OK and the moulinette KO you, please send an email with make sendfunction ex: make sendsubstr
+
+checkmakefile:
+	@ls .. | grep Makefile > /dev/null 2>&1 || (tput setaf 1 && echo Makefile not found. && exit 1)
 
 $(addprefix docker, $(MANDATORY)) $(addprefix docker, $(BONUS)) dockerm dockerb dockera: docker%:
 	@docker rm -f mc > /dev/null 2>&1 || true
