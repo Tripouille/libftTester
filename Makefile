@@ -1,5 +1,6 @@
 .DEFAULT_GOAL	:= a
 UTILS			= $(addprefix utils/, sigsegv.cpp color.cpp check.cpp leaks.cpp)
+LIBFT_PATH		= ..
 TESTS_PATH		= tests/
 MANDATORY		= memset bzero memcpy memccpy memmove memchr memcmp strlen isalpha isdigit isalnum \
 				isascii isprint toupper tolower strchr strrchr strncmp strlcpy strlcat strnstr \
@@ -10,7 +11,7 @@ VSOPEN			= $(addprefix vs, $(MANDATORY)) $(addprefix vs, $(BONUS))
 MAIL			= $(addprefix send, $(MANDATORY)) $(addprefix send, $(BONUS))
 
 CC		= clang++
-CFLAGS	= -g3 -ldl -std=c++11 -I utils/ -I..
+CFLAGS	= -g3 -ldl -std=c++11 -I utils/ -I$(LIBFT_PATH)
 
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
@@ -18,25 +19,25 @@ ifeq ($(UNAME), Linux)
 endif
 
 $(MANDATORY): %: mandatory_start
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && $(VALGRIND) ./a.out && rm -f a.out
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L$(LIBFT_PATH) -lft && $(VALGRIND) ./a.out && rm -f a.out
 
 $(BONUS): %: bonus_start
-	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L.. -lft && $(VALGRIND) ./a.out && rm -f a.out
+	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L$(LIBFT_PATH) -lft && $(VALGRIND) ./a.out && rm -f a.out
 
 $(VSOPEN): vs%:
 	@code $(TESTS_PATH)ft_$*_test.cpp
 
 $(MAIL): send%:
-	cat ../ft_$*.c | mail -s "libftTester Improvement $*" jgambard@student.42lyon.fr
+	cat $(LIBFT_PATH)/ft_$*.c | mail -s "libftTester Improvement $*" jgambard@student.42lyon.fr
 
 mandatory_start: update message
 	@tput setaf 6
-	make -C ..
+	make -C $(LIBFT_PATH)
 	@tput setaf 4 && echo [Mandatory]
 
 bonus_start: update message
 	@tput setaf 6
-	make bonus -C ..
+	make bonus -C $(LIBFT_PATH)
 	@tput setaf 5 && echo [Bonus]
 
 update:
@@ -46,7 +47,7 @@ message: checkmakefile
 	@tput setaf 3 && echo If all your tests are OK and the moulinette KO you, please send an email with make sendfunction ex: make sendsubstr
 
 checkmakefile:
-	@ls .. | grep Makefile > /dev/null 2>&1 || (tput setaf 1 && echo Makefile not found. && exit 1)
+	@ls $(LIBFT_PATH) | grep Makefile > /dev/null 2>&1 || (tput setaf 1 && echo Makefile not found. && exit 1)
 
 $(addprefix docker, $(MANDATORY)) $(addprefix docker, $(BONUS)) dockerm dockerb dockera: docker%:
 	@docker rm -f mc > /dev/null 2>&1 || true
@@ -60,9 +61,9 @@ b: $(BONUS)
 a: m b 
 
 clean:
-	make clean -C .. && rm -rf a.out*
+	make clean -C $(LIBFT_PATH) && rm -rf a.out*
 
 fclean:
-	make fclean -C .. && rm -rf a.out*
+	make fclean -C $(LIBFT_PATH) && rm -rf a.out*
 
 .PHONY:	mandatory_start m bonus_start b a fclean clean update message $(VSOPEN) $(MAIL)
