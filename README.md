@@ -21,7 +21,7 @@ Thanks to gurival- for the docker idea (https://github.com/grouville/valgrind_42
 make vs[funtion name] = open the corresponding tests in vscode ex: make vscalloc
 
 # Libft Path
-You can customize the path to your libft project by changing the `LIBFT_PATH` variable inside the `Makefile`. The default value is `..`.
+You can customize the path to your libft project by changing the `LIBFT_PATH` variable inside the `Makefile`. The default value is `..` (previous directory)
 
 # Outputs
 
