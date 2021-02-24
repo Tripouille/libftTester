@@ -1,6 +1,7 @@
 .DEFAULT_GOAL	:= a
 UTILS			= $(addprefix utils/, sigsegv.cpp color.cpp check.cpp leaks.cpp)
-LIBFT_PATH		= ..
+PARENT_DIR		= $(shell dirname $(shell pwd))
+LIBFT_PATH		= $(PARENT_DIR)
 TESTS_PATH		= tests/
 MANDATORY		= memset bzero memcpy memccpy memmove memchr memcmp strlen isalpha isdigit isalnum \
 				isascii isprint toupper tolower strchr strrchr strncmp strlcpy strlcat strnstr \
@@ -52,7 +53,7 @@ checkmakefile:
 $(addprefix docker, $(MANDATORY)) $(addprefix docker, $(BONUS)) dockerm dockerb dockera: docker%:
 	@docker rm -f mc > /dev/null 2>&1 || true
 	docker build -qt mi .
-	docker run -dti --name mc -v $(shell dirname $(shell pwd)):/project/ mi
+	docker run -dti --name mc -v $(PARENT_DIR):/project/ mi
 	docker exec -ti mc make $* -C libftTester || true
 	@docker rm -f mc > /dev/null 2>&1
 
