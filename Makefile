@@ -18,6 +18,9 @@ UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
 	VALGRIND = valgrind -q --leak-check=full
 endif
+ifeq ($(IN_DOCKER),TRUE)
+	LIBFT_PATH = /project/
+endif
 
 $(MANDATORY): %: mandatory_start
 	@$(CC) $(CFLAGS) $(UTILS) $(TESTS_PATH)ft_$*_test.cpp -L$(LIBFT_PATH) -lft && $(VALGRIND) ./a.out && rm -f a.out
@@ -53,7 +56,7 @@ checkmakefile:
 $(addprefix docker, $(MANDATORY)) $(addprefix docker, $(BONUS)) dockerm dockerb dockera: docker%:
 	@docker rm -f mc > /dev/null 2>&1 || true
 	docker build -qt mi .
-	docker run -dti --name mc -v $(PARENT_DIR):/project/ mi
+	docker run -e IN_DOCKER=TRUE -dti --name mc -v $(LIBFT_PATH):/project/ -v $(PARENT_DIR)/libftTester:/project/libftTester mi
 	docker exec -ti mc make $* -C libftTester || true
 	@docker rm -f mc > /dev/null 2>&1
 
