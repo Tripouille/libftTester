@@ -54,6 +54,12 @@ int main(void)
 	/* 12 */ check(!strcmp(tab[0], "chinimala"));
 	/* 13 */ check(tab[1] == NULL);
 	freeTab(tab); showLeaks();
+
+	tab = ft_split("", ' ');
+	/* 14 */ mcheck(tab, sizeof(char *) * 1);
+	/* 15 */ check(tab[0] == NULL);
+	freeTab(tab); showLeaks();
+
 	write(1, "\n", 1);
 	return (0);
 }

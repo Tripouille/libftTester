@@ -12,8 +12,7 @@ VSOPEN			= $(addprefix vs, $(MANDATORY)) $(addprefix vs, $(BONUS))
 MAIL			= $(addprefix send, $(MANDATORY)) $(addprefix send, $(BONUS))
 
 CC		= clang++
-CFLAGS	= -g3 -ldl -std=c++11 -I utils/ -I$(LIBFT_PATH)
-
+CFLAGS	= -g3 -ldl -std=c++11 -I utils/ -I$(LIBFT_PATH) 
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
 	VALGRIND = valgrind -q --leak-check=full
