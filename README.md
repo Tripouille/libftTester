@@ -1,6 +1,6 @@
 # libftTester (2019+)
 Tester for the libft project of 42 school (with personalized leaks checking on mac, using valgrind on linux)  
-*If all your tests are OK and the moulinette KO you, please send an email with make sendfunction ex: make sendsubstr or contact me on slack/discord for improvements*  
+*If all your tests are OK (with valgrind) and the moulinette KO you, please send an email with make sendfunction ex: make sendsubstr or contact me on slack/discord for improvements*  
 Clone this tester in your libft repository, or somewhere else and customize the path to your libft project by changing the LIBFT_PATH variable inside the Makefile.  
 
 ![alt text](https://i.imgur.com/EWmbpxx.png)  
