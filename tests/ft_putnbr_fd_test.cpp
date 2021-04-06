@@ -44,10 +44,16 @@ int main(void)
 	fd = open("tripouille", O_RDWR | O_CREAT);
 	ft_putnbr_fd(INT_MIN, fd);
 	lseek(fd, SEEK_SET, 0);
-	read(fd, s, 11);
+	read(fd, s, 12);
 	/* 4 */ check(!strcmp(s, to_string(INT_MIN).c_str())); showLeaks();
 	unlink("./tripouille");
 
+	fd = open("tripouille", O_RDWR | O_CREAT);
+	ft_putnbr_fd(-42, fd);
+	lseek(fd, SEEK_SET, 0);
+	s[read(fd, s, 4)] = 0;
+	/* 5 ipenas */ check(!strcmp(s, "-42")); showLeaks();
+	unlink("./tripouille");
 	write(1, "\n", 1);
 	return (0);
 }
