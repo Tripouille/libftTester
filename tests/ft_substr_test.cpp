@@ -32,6 +32,11 @@ int main(void)
 	s = ft_substr(str, 42, 42000000);
 	/* 7 */ check(!strcmp(s, ""));
 	/* 8 */ mcheck(s, 1); free(s); free(str); showLeaks();
+
+	str = strdup("0123456789");
+	s = ft_substr(str, 9, 10);
+	/* 9  mbueno-g */ check(!strcmp(s, "9"));
+	/* 10  mbueno-g */ mcheck(s, 2); free(s); free(str); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
