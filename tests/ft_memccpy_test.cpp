@@ -31,6 +31,9 @@ int main(void)
 	for (; i < 100 && dest[i] == 0; ++i)
 		;
 	/* 6 */ check(i == 10); showLeaks();
+	memset(dest, 'A', 100);
+	/* 7 ecruz-go */ check(ft_memccpy(dest, "42", '2', 1) == 0 && dest[0] == '4' && dest[1] == 'A'); showLeaks();
+
 	write(1, "\n", 1);
 	return (0);
 }
