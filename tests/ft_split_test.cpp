@@ -60,6 +60,36 @@ int main(void)
 	/* 15 */ check(tab[0] == NULL);
 	freeTab(tab); showLeaks();
 
+	/* sguerra- */
+	char * splitme = strdup("Tripouille");
+	tab = ft_split(splitme, ' ');
+	/* 16 */ mcheck(tab, sizeof(char *) * 2);
+	/* 17 */ check(!strcmp(tab[0], "Tripouille"));
+	/* 18 */ check(tab[1] == NULL);
+	free(splitme); freeTab(tab); showLeaks();
+
+	splitme = strdup("Tripouille ");
+	tab = ft_split(splitme, ' ');
+	/* 19 */ mcheck(tab, sizeof(char *) * 2);
+	/* 20 */ check(!strcmp(tab[0], "Tripouille"));
+	/* 21 */ check(tab[1] == NULL);
+	free(splitme); freeTab(tab); showLeaks();
+
+	splitme = strdup(" Tripouille");
+	tab = ft_split(splitme, ' ');
+	/* 22 */ mcheck(tab, sizeof(char *) * 2);
+	/* 23 */ check(!strcmp(tab[0], "Tripouille"));
+	/* 24 */ check(tab[1] == NULL);
+	free(splitme); freeTab(tab); showLeaks();
+
+	splitme = strdup(" Tripouille ");
+	tab = ft_split(splitme, ' ');
+	/* 25 */ mcheck(tab, sizeof(char *) * 2);
+	/* 26 */ check(!strcmp(tab[0], "Tripouille"));
+	/* 27 */ mcheck(tab[0], strlen("Tripouille") + 1);
+	/* 28 */ check(tab[1] == NULL);
+	free(splitme); freeTab(tab); showLeaks();
+
 	write(1, "\n", 1);
 	return (0);
 }
