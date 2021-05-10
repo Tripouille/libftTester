@@ -37,6 +37,11 @@ int main(void)
 	s = ft_substr(str, 9, 10);
 	/* 9  mbueno-g */ check(!strcmp(s, "9"));
 	/* 10  mbueno-g */ mcheck(s, 2); free(s); free(str); showLeaks();
+
+	s = ft_substr("42", 0, 0);
+	/* 9  fcaquard */ check(!strcmp(s, ""));
+	/* 10  fcaquard */ mcheck(s, 1); free(s); showLeaks();
+
 	write(1, "\n", 1);
 	return (0);
 }
