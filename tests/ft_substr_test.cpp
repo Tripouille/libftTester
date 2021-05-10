@@ -39,8 +39,8 @@ int main(void)
 	/* 10  mbueno-g */ mcheck(s, 2); free(s); free(str); showLeaks();
 
 	s = ft_substr("42", 0, 0);
-	/* 9  fcaquard */ check(!strcmp(s, ""));
-	/* 10  fcaquard */ mcheck(s, 1); free(s); showLeaks();
+	/* 11  fcaquard */ check(!strcmp(s, ""));
+	/* 12  fcaquard */ mcheck(s, 1); free(s); showLeaks();
 
 	write(1, "\n", 1);
 	return (0);
