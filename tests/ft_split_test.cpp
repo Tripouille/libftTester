@@ -90,6 +90,31 @@ int main(void)
 	/* 28 */ check(tab[1] == NULL);
 	free(splitme); freeTab(tab); showLeaks();
 
+	/* wleite */
+	splitme = strdup("--1-2--3---4----5-----42");
+	tab = ft_split(splitme, '-');
+	/* 29 */ mcheck(tab, sizeof(char *) * 7);
+	/* 30 */ check(!strcmp(tab[0], "1"));
+	/* 31 */ mcheck(tab[0], strlen("1") + 1);
+
+	/* 32 */ check(!strcmp(tab[1], "2"));
+	/* 33 */ mcheck(tab[1], strlen("2") + 1);
+
+	/* 34 */ check(!strcmp(tab[2], "3"));
+	/* 35 */ mcheck(tab[2], strlen("3") + 1);
+
+	/* 36 */ check(!strcmp(tab[3], "4"));
+	/* 37 */ mcheck(tab[3], strlen("4") + 1);
+
+	/* 38 */ check(!strcmp(tab[4], "5"));
+	/* 39 */ mcheck(tab[4], strlen("5") + 1);
+
+	/* 40 */ check(!strcmp(tab[5], "42"));
+	/* 41 */ mcheck(tab[5], strlen("42") + 1);
+
+	/* 42 */ check(tab[6] == NULL);
+	free(splitme); freeTab(tab); showLeaks();
+	
 	write(1, "\n", 1);
 	return (0);
 }
