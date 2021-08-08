@@ -9,7 +9,6 @@ MANDATORY		= memset bzero memcpy memmove memchr memcmp strlen isalpha isdigit is
 				putendl_fd putnbr_fd striteri
 BONUS			= lstnew lstadd_front lstsize lstlast lstadd_back lstdelone lstclear lstiter lstmap
 VSOPEN			= $(addprefix vs, $(MANDATORY)) $(addprefix vs, $(BONUS))
-MAIL			= $(addprefix send, $(MANDATORY)) $(addprefix send, $(BONUS))
 
 CC		= clang++
 CFLAGS	= -g3 -ldl -std=c++11 -I utils/ -I$(LIBFT_PATH) 
@@ -29,9 +28,6 @@ $(BONUS): %: bonus_start
 
 $(VSOPEN): vs%:
 	@code $(TESTS_PATH)ft_$*_test.cpp
-
-$(MAIL): send%:
-	cat $(LIBFT_PATH)/ft_$*.c | mail -s "libftTester Improvement $*" jgambard@student.42lyon.fr
 
 mandatory_start: update message
 	@tput setaf 6
