@@ -40,4 +40,4 @@ MOK / MKO = test about your malloc size (this shouldn't be tested by moulinette)
 
 
 # Report bugs / Improvement
-Contact me on slack or discord : jgambard or use make sendfunction ex make sendsubstr if all your tests were OK and the moulinette KO you.  
+Contact me on slack or discord : jgambard  
