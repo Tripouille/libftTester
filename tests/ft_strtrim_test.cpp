@@ -44,15 +44,10 @@ int main(void)
 	/* 13 */ check(!strcmp(s, ""));
 	/* 14 */ mcheck(s, 1); free(s); showLeaks();
 	
-	s = ft_strtrim("abcdba","acb");
-	/* opsec-infosec 15*/ check(!strcmp(s, "d"));
+	s = ft_strtrim("abcdba", "acb");
+	/* opsec-infosec 15 */ check(!strcmp(s, "d"));
  	/* opsec-infosec 16 */ mcheck(s, 1); free(s); showLeaks();
 	
-	s = ft_strtrim("abcdba", NULL);
-	/* opsec-infosec 17*/ check(s == NULL);
-
-	s = ft_strtrim(NULL, "acb");
-	/* opsec-infosec 18*/ check(s == NULL);
 	write(1, "\n", 1);
 	return (0);
 }
