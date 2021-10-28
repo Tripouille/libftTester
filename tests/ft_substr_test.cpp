@@ -42,6 +42,14 @@ int main(void)
 	/* 11  fcaquard */ check(!strcmp(s, ""));
 	/* 12  fcaquard */ mcheck(s, 1); free(s); showLeaks();
 
+	s = ft_substr("BONJOUR LES HARICOTS !", 8, 14);
+	/* 13  dfarhi */ check(!strcmp(s, "LES HARICOTS !"));
+	/* 14  dfarhi */ mcheck(s, 15); free(s); showLeaks();
+
+	s = ft_substr("test", 1, 2);
+	/* 15  dfarhi */ check(!strcmp(s, "es"));
+	/* 16  dfarhi */ mcheck(s, 3); free(s); showLeaks();
+
 	write(1, "\n", 1);
 	return (0);
 }
