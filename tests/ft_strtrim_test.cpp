@@ -43,6 +43,11 @@ int main(void)
 	s = ft_strtrim("", "");
 	/* 13 */ check(!strcmp(s, ""));
 	/* 14 */ mcheck(s, 1); free(s); showLeaks();
+	
+	s = ft_strtrim("abcdba", "acb");
+	/* opsec-infosec 15 */ check(!strcmp(s, "d"));
+ 	/* opsec-infosec 16 */ mcheck(s, 1); free(s); showLeaks();
+	
 	write(1, "\n", 1);
 	return (0);
 }
