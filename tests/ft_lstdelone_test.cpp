@@ -19,8 +19,7 @@ int main(void)
 	title("ft_lstdelone\t: ");
 
 	t_list * l =  ft_lstnew(malloc(1));
-	ft_lstdelone(l, free); l = 0;
-	showLeaks();
+	ft_lstdelone(l, free); mcheck(l, 0); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
