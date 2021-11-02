@@ -5,23 +5,23 @@ Clone this tester in your libft repository, or somewhere else and customize the 
 ![alt text](https://i.imgur.com/EWmbpxx.png)  
 
 
-# Commands
+## Commands
 make m = launch mandatory tests  
 make b = launch bonus tests  
 make a = launch mandatory tests + bonus tests  
-make [funtion name] = launch associated test ex: make calloc  
+make [function name] = launch associated test ex: `make calloc`  
  
 make dockerm = launch mandatory tests in linux container  
 make dockerb = launch bonus tests in linux container  
 make dockera = launch mandatory tests + bonus tests in linux container  
-make docker[funtion name] = launch associated test in linux container ex: make dockercalloc  
+make docker [function name] = launch associated test in linux container ex: `make dockercalloc`  
 Thanks to gurival- for the docker idea (https://github.com/grouville/valgrind_42)  
 
-make vs[funtion name] = open the corresponding tests in vscode ex: make vscalloc  
+make vs [function name] = open the corresponding tests in vscode ex: `make vscalloc`  
 
 
-# Setup docker in goinfre for 42 mac  
-```
+## Setup docker in goinfre for 42 mac  
+```sh
 rm -rf ~/Library/Containers/com.docker.docker  
 rm -rf ~/.docker  
 rm -rf /goinfre/${USER}/docker /goinfre/${USER}/agent  
@@ -31,7 +31,7 @@ ln -s /goinfre/${USER}/docker ~/.docker
 ```
 
 
-# Outputs
+## Outputs
 ![alt text](https://i.imgur.com/en8rJpS.png)  
 ![alt text](https://i.imgur.com/ZvzhIoZ.png)  
 ![alt text](https://i.imgur.com/KrlN2Pg.png)  
@@ -39,5 +39,5 @@ ln -s /goinfre/${USER}/docker ~/.docker
 MOK / MKO = test about your malloc size (this shouldn't be tested by moulinette)  
 
 
-# Report bugs / Improvement
+## Report bugs / Improvement
 Contact me on slack or discord : jgambard  
