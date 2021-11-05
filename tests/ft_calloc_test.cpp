@@ -18,8 +18,12 @@ int main(void)
 
 	void * p = ft_calloc(2, 2);
 	char e[] = {0, 0, 0, 0};
+	void *p0 = ft_calloc(0, 0);
+	char e0[] = {0};
 	/* 1 */ check(!memcmp(p, e, 4));
 	/* 2 */ mcheck(p, 4); free(p); showLeaks();
+	/* 3 */ check(!memcmp(p0, e0, 1));
+	/* 4 */ mcheck(p0, 1); free(p0); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
