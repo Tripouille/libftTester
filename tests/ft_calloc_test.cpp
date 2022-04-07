@@ -20,6 +20,7 @@ int main(void)
 	char e[] = {0, 0, 0, 0};
 	/* 1 */ check(!memcmp(p, e, 4));
 	/* 2 */ mcheck(p, 4); free(p); showLeaks();
+	/* 3 */ check(ft_calloc(SIZE_MAX, SIZE_MAX) == NULL);
 	write(1, "\n", 1);
 	return (0);
 }
