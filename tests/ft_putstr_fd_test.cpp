@@ -25,6 +25,12 @@ int main(void)
 	char s[10] = {0}; read(fd, s, 3);
 	/* 1 */ check(!strcmp(s, "42")); showLeaks();
 	unlink("./tripouille");
+	fd = open("tripouille", O_RDWR | O_CREAT);
+	ft_putstr_fd(NULL, fd);
+	lseek(fd, SEEK_SET, 0);
+	s[0] = 0; read(fd, s, 3);
+	/* 2 */ check(!strcmp(s, "")); showLeaks();
+	unlink("./tripouille");
 	write(1, "\n", 1);
 	return (0);
 }
