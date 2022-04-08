@@ -32,6 +32,7 @@ int main(void)
 	/* 14 */ check(ft_strncmp("", "1", 1) < 0); showLeaks();
 	/* 15 */ check(ft_strncmp("1", "", 1) > 0); showLeaks();
 	/* 16 */ check(ft_strncmp("", "", 1) == 0); showLeaks();
+	/* 17 */ check(ft_strncmp("\200", "\0", 1) > 0); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
