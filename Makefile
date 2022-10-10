@@ -11,7 +11,7 @@ BONUS			= lstnew lstadd_front lstsize lstlast lstadd_back lstdelone lstclear lst
 VSOPEN			= $(addprefix vs, $(MANDATORY)) $(addprefix vs, $(BONUS))
 
 CC		= clang++
-CFLAGS	= -g3 -ldl -std=c++11 -I utils/ -I$(LIBFT_PATH) 
+CFLAGS	= -g3 -ldl -gdwarf-4 -std=c++11 -I utils/ -I$(LIBFT_PATH) 
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
 	VALGRIND = valgrind -q --leak-check=full
