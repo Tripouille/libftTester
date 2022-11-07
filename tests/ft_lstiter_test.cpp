@@ -10,7 +10,7 @@ extern "C"
 #include "leaks.hpp"
 #include <string.h>
 
-void freeList(t_list *head) {if (head) freeList(head->next); free(head);}
+void freeList(t_list *head) {if (head) freeList((t_list *)head->next); free(head);}
 void addOne(void * p) {++*(int*)p;}
 
 int iTest = 1;
@@ -28,7 +28,7 @@ int main(void)
 	/* 1 2 3 4 */ for (int i = 0; i < 4; ++i)
 	{
 		check(*(int*)tmp->content == i + 1);
-		tmp = tmp->next;
+		tmp = (t_list *)tmp->next;
 	}
 	freeList(l); showLeaks();
 	write(1, "\n", 1);

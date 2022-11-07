@@ -10,7 +10,7 @@ extern "C"
 #include "leaks.hpp"
 #include <string.h>
 
-void freeList(t_list *head) {if (head) freeList(head->next); free(head);}
+void freeList(t_list *head) {if (head) freeList((t_list *)head->next); free(head);}
 
 int iTest = 1;
 int main(void)
@@ -25,8 +25,8 @@ int main(void)
 
 	ft_lstadd_front(&l, ft_lstnew((void*)2));
 	/* 3 */ check(l->content == (void*)2);
-	/* 4 */ check(l->next->content == (void*)1);
-	/* 5 */ check(l->next->next == 0); 
+	/* 4 */ check(((t_list *)l->next)->content == (void*)1);
+	/* 5 */ check(((t_list *)l->next)->next == 0);
 	freeList(l); showLeaks();
 	write(1, "\n", 1);
 	return (0);

@@ -10,7 +10,7 @@ extern "C"
 #include "leaks.hpp"
 #include <string.h>
 
-void freeList(t_list *head) {if (head) freeList(head->next); free(head);}
+void freeList(t_list *head) {if (head) freeList((t_list *)head->next); free(head);}
 
 int iTest = 1;
 int main(void)
