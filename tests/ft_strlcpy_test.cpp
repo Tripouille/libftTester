@@ -25,8 +25,8 @@ int main(void)
 	/* 5 */ check(ft_strlcpy(dest, src, 6) == strlen(src) && !memcmp(src, dest, 5) && dest[5] == 0); showLeaks(); memset(dest, 'A', 10);
 	/* 6 */ check(ft_strlcpy(dest, src, 7) == strlen(src) && !memcmp(src, dest, 7)); showLeaks(); memset(dest, 'A', 10);
 	/* 7 */ check(ft_strlcpy(dest, src, 8) == strlen(src) && !memcmp(src, dest, 7)); showLeaks(); memset(dest, 'A', 10);
-	/* 8 */ check(ft_strlcpy(dest, "", 42) == 0 && !memcmp("", dest, 1)); showLeaks(); memset(dest, 0, 10);
-	/* 9 */ check(ft_strlcpy(dest, "1", 0) == 1 && dest[0] == 0); showLeaks(); memset(dest, 'A', 10);
+	/* 8 */ check(ft_strlcpy(dest, "", 42) == strlen("") && !memcmp("", dest, 1)); showLeaks(); memset(dest, 0, 10);
+	/* 9 */ check(ft_strlcpy(dest, "1", 0) == strlen("1") && dest[0] == 0); showLeaks(); memset(dest, 'A', 10);
 	write(1, "\n", 1);
 	return (0);
 }
