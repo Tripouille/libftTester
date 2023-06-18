@@ -33,8 +33,7 @@ int main(void)
 	/* 7 */ check(p != NULL); free(p); //showLeaks();
 	p = ft_calloc(5, 0);
 	/* 8 */ check(p != NULL); free(p); //showLeaks();
-	p = ft_calloc(-5, -5);
-	/* 9 */ check(p == NULL); free(p); //showLeaks();
+	/* 9 */ check(ft_calloc(-5, -5) == NULL); showLeaks();
 	p = ft_calloc(0, -5);
 	/* 10 */ check(p != NULL); free(p); //showLeaks();
 	p = ft_calloc(-5, 0);
