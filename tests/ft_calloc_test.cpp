@@ -24,6 +24,9 @@ int main(void)
 	/* 3 */ check(ft_calloc(SIZE_MAX, SIZE_MAX) == NULL); showLeaks()
 
 	/* @evportel */
+	/* The following tests are not supported by the function's documentation. 
+ 	* But some effects returned in the trait by Moulinette so the following 
+  	* tests were implemented. */
 	/* 4 */ check(ft_calloc(INT_MAX, INT_MAX) == NULL);
 	p = ft_calloc(INT_MIN, INT_MIN);
 	/* 5 */ check(p == NULL); free(p); //showLeaks();
