@@ -21,7 +21,7 @@ int main(void)
 	char e[] = {0, 0, 0, 0};
 	/* 1 */ check(!memcmp(p, e, 4));
 	/* 2 */ mcheck(p, 4); free(p); showLeaks();
-	/* 3 */ check(ft_calloc(SIZE_MAX, SIZE_MAX) == NULL);
+	/* 3 */ check(ft_calloc(SIZE_MAX, SIZE_MAX) == NULL); showLeaks()
 
 	/* @evportel */
 	/* 4 */ check(ft_calloc(INT_MAX, INT_MAX) == NULL);
