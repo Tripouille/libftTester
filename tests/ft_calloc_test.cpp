@@ -28,8 +28,7 @@ int main(void)
  	* But some effects returned in the trait by Moulinette so the following 
   	* tests were implemented. */
 	/* 4 */ check(ft_calloc(INT_MAX, INT_MAX) == NULL);
-	p = ft_calloc(INT_MIN, INT_MIN);
-	/* 5 */ check(p == NULL); free(p); //showLeaks();
+	/* 5 */ check(ft_calloc(INT_MIN, INT_MIN) == NULL); showLeaks();
 	p = ft_calloc(0, 0);
 	/* 6 */ check(p != NULL); free(p); //showLeaks();
 	p = ft_calloc(0, 5);
@@ -41,10 +40,8 @@ int main(void)
 	/* 10 */ check(p != NULL); free(p); //showLeaks();
 	p = ft_calloc(-5, 0);
 	/* 11 */ check(p != NULL); free(p); //showLeaks();
-	p = ft_calloc(3, -5);
-	/* 12 */ check(p == NULL); free(p); //showLeaks();
-	p = ft_calloc(-5, 3);
-	/* 13 */ check(p == NULL); free(p); //showLeaks();
+	/* 12 */ check(ft_calloc(3, -5) == NULL); showLeaks();
+	/* 13 */ check(ft_calloc(-5, 3) == NULL); showLeaks();
 
 	write(1, "\n", 1);
 	return (0);
