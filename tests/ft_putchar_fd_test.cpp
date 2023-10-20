@@ -24,6 +24,7 @@ int main(void)
 	lseek(fd, SEEK_SET, 0);
 	char s[10] = {0}; read(fd, s, 2);
 	/* 1 */ check(!strcmp(s, "a")); showLeaks();
+	close(fd);
 	unlink("./tripouille");
 	write(1, "\n", 1);
 	return (0);
