@@ -10,6 +10,7 @@ extern "C"
 #include "leaks.hpp"
 #include <string.h>
 #include <limits.h>
+#include <cstdint>
 
 int iTest = 1;
 int main(void)
