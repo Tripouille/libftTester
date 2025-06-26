@@ -50,6 +50,10 @@ int main(void)
 	/* 15  dfarhi */ check(!strcmp(s, "es"));
 	/* 16  dfarhi */ mcheck(s, 3); free(s); showLeaks();
 
+	s = ft_substr("1234567890", 9, 8);
+        /* 17  rmarcos */ check(!strcmp(s, "0"));
+        /* 18  rmarcos */ mcheck(s, 2); free(s); showLeaks();
+
 	write(1, "\n", 1);
 	return (0);
 }
