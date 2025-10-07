@@ -28,7 +28,7 @@ int main(void)
 	/* The following tests are not supported by the function's documentation. 
  	* But some effects returned in the trait by Moulinette so the following 
   	* tests were implemented. */
-	/* 4 */ check(ft_calloc(INT_MAX, INT_MAX) == NULL);
+	/* 4 */ check(ft_calloc(INT_MAX, INT_MAX) == NULL); showLeaks();
 	/* 5 */ check(ft_calloc(INT_MIN, INT_MIN) == NULL); showLeaks();
 	p = ft_calloc(0, 0);
 	/* 6 */ check(p != NULL); free(p); showLeaks();
