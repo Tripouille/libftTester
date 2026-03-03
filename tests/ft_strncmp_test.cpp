@@ -9,6 +9,7 @@ extern "C"
 #include "check.hpp"
 #include "leaks.hpp"
 #include <string.h>
+#include <limits.h>
 
 int iTest = 1;
 int main(void)
@@ -32,6 +33,18 @@ int main(void)
 	/* 14 */ check(ft_strncmp("", "1", 1) < 0); showLeaks();
 	/* 15 */ check(ft_strncmp("1", "", 1) > 0); showLeaks();
 	/* 16 */ check(ft_strncmp("", "", 1) == 0); showLeaks();
+
+	/* ohaponiuk */
+	/* Check correct behavior for negative char values.
+	 * This matches the behavior of libc strncmp.*/
+	signed char	str1[] = "test";
+	signed char	str2[] = "test";
+	size_t		len = strlen((const char *)str1);
+	str2[3] = CHAR_MIN;
+	/* 17 */ check(ft_strncmp((const char *)str1, (const char *)str2, len) == strncmp((const char *)str1, (const char *)str2, len)); showLeaks();
+	str2[3] = -42;
+	/* 18 */ check(ft_strncmp((const char *)str1, (const char *)str2, len) == strncmp((const char *)str1, (const char *)str2, len)); showLeaks();
+
 	write(1, "\n", 1);
 	return (0);
 }
