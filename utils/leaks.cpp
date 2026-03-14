@@ -48,7 +48,7 @@ void showLeaks(void)
 {
     if (mallocList.size() != 0)
     {
-        std::ostringstream ss; ss << FG_RED << "LEAKS.KO "; write(1, ss.str().c_str(), ss.str().size());
+        std::ostringstream ss; ss << FG_RED << "LEAKS.KO " << RESET_ALL; write(1, ss.str().c_str(), ss.str().size());
         std::vector<ptr>::iterator it = mallocList.begin(); std::vector<ptr>::iterator ite = mallocList.end();
         for (; it != ite; ++it)
             {std::ostringstream ss; ss << "[" << it->p << " : " << it->size << "] "; write(1, ss.str().c_str(), ss.str().size());}
