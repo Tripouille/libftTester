@@ -15,8 +15,8 @@ int main(void)
 	signal(SIGSEGV, sigsegv);
 	title("ft_strlen\t: ")
 
-	/* 1 */ check(ft_strlen("123") == 3); showLeaks();
-	/* 2 */ check(ft_strlen("") == 0); showLeaks();
+	/* 1 */ check(ft_strlen((char *)"123") == 3); showLeaks();
+	/* 2 */ check(ft_strlen((char *)"") == 0); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
