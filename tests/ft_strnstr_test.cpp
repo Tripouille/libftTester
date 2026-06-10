@@ -34,6 +34,7 @@ int main(void)
 	/* 13 opsec-infosec */ check(ft_strnstr("1", "a", 1) == NULL); showLeaks();
 	/* 14 opsec-infosec */ check(ft_strnstr("22", "b", 2) == NULL); showLeaks();
 	/* 15 */ check(ft_strnstr("22", "22", 3) != NULL); showLeaks();
+	/* 16 */ check(ft_strnstr(haystack, "", 0) == haystack); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
