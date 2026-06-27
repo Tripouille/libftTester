@@ -33,6 +33,8 @@ int main(void)
 	/* 12 mbueno-g */ check(ft_strnstr(haystack, "a", 1) == haystack); showLeaks();
 	/* 13 opsec-infosec */ check(ft_strnstr("1", "a", 1) == NULL); showLeaks();
 	/* 14 opsec-infosec */ check(ft_strnstr("22", "b", 2) == NULL); showLeaks();
+	/* 15 */ { const char *h = "22"; check(ft_strnstr(h, "22", 3) == h); } showLeaks();
+	/* 16 */ check(ft_strnstr(haystack, "", 0) == haystack); showLeaks();
 	write(1, "\n", 1);
 	return (0);
 }
