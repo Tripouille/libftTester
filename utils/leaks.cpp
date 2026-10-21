@@ -16,7 +16,9 @@ void * malloc(size_t size) throw()
 {
     void *(*libc_malloc)(size_t) = (void *(*)(size_t))dlsym(RTLD_NEXT, "malloc");
     void * p = libc_malloc(size);
-    mallocListAdd(p, size);
+    if (p != NULL) {
+        mallocListAdd(p, size);
+    }
     return (p);
 }
 
