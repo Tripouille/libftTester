@@ -16,8 +16,8 @@ int main(void)
 	signal(SIGSEGV, sigsegv);
 	title("ft_memcmp\t: ")
 
-	char s[] = {-128, 0, 127, 0};
-	char sCpy[] = {-128, 0, 127, 0};
+	char s[] = {'\x80', 0, 127, 0};
+	char sCpy[] = {'\x80', 0, 127, 0};
 	char s2[] = {0, 0, 127, 0};
 	char s3[] = {0, 0, 42, 0};
 	/* 1 */ check(!ft_memcmp(s, sCpy, 4)); showLeaks();
