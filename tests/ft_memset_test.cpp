@@ -26,6 +26,7 @@ int main(void)
 	for (; i < 100 && tab[i] == 'A'; ++i)
 		;
 	/* 2 */ check(i == 42 && tab[42] == 0); showLeaks();
+	/* 3 */ check(ft_memset(tab, 'A', '4') == tab);
 	write(1, "\n", 1);
 	return (0);
 }
