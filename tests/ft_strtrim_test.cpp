@@ -52,6 +52,18 @@ int main(void)
 	/* mogiyadev 17 */ check(!strcmp(s, "bab"));
  	/* mogiyadev 18 */ mcheck(s, 4); free(s); showLeaks();
 
+	s = ft_strtrim("--1-2--3---4----5-----42", "-");
+	/* 19 */ check(!strcmp(s, "1-2--3---4----5-----42"));
+ 	/* 20 */ mcheck(s, 23); free(s); showLeaks();
+
+	s = ft_strtrim("1-2--3---4----5-----42--", "-");
+	/* 21 */ check(!strcmp(s, "1-2--3---4----5-----42"));
+ 	/* 22 */ mcheck(s, 23); free(s); showLeaks();
+
+	s = ft_strtrim("abaaba", "a");
+	/* 23 */ check(!strcmp(s, "baab"));
+ 	/* 24 */ mcheck(s, 5); free(s); showLeaks();
+
 	write(1, "\n", 1);
 	return (0);
 }
