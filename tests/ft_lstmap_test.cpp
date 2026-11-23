@@ -13,6 +13,30 @@ extern "C"
 void freeList(t_list *head) {if (head) freeList((t_list *)head->next); free(head);}
 void * addOne(void * p) {void * r = malloc(sizeof(int)); *(int*)r = *(int*)p + 1; return (r);}
 
+static void * addOneOrNull(void *p) {return p ? addOne(p) : NULL;}
+
+static void checkNullContent(int nullIndex)
+{
+	int values[] = {10, 20, 30};
+	t_list input[] = {{values, NULL}, {values + 1, NULL}, {values + 2, NULL}};
+	input[0].next = &input[1];
+	input[1].next = &input[2];
+	input[nullIndex].content = NULL;
+	t_list *mapped = ft_lstmap(input, addOneOrNull, free);
+	t_list *node = mapped;
+	bool ok = true;
+
+	for (int i = 0; i < 3 && ok; ++i)
+	{
+		ok = node && (i == nullIndex ? node->content == NULL
+			: node->content && *(int *)node->content == values[i] + 1);
+		if (ok)
+			node = node->next;
+	}
+	check(ok && node == NULL);
+	ft_lstclear(&mapped, free); showLeaks();
+}
+
 int iTest = 1;
 int main(void)
 {
@@ -37,6 +61,8 @@ int main(void)
 		tmp = (t_list *)tmp->next;
 	}
 	freeList(l); ft_lstclear(&m, free); showLeaks();
+	/* 9 10 11 */ for (int i = 0; i < 3; ++i)
+		checkNullContent(i);
 	write(1, "\n", 1);
 	return (0);
 }
